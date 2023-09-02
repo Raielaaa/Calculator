@@ -431,7 +431,7 @@ class StandardFragment : Fragment() {
             resources.getString(R.string.divide),
             resources.getString(R.string.dot)
         )
-        return operatorList.contains(string.last().toString())
+        return operatorList.contains(string.replace(" ", "").last().toString())
     }
 
     override fun onResume() {
