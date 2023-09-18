@@ -5,6 +5,7 @@ import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.Spinner
 import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
@@ -15,15 +16,17 @@ class ConverterItemAdapter (
     private val collections: List<ConverterItemModel>,
     private val rvTopSelection: RecyclerView,
     private val context: Context,
-    private val clickListener: () -> Unit
+    private val spinnerInputFrom: Spinner,
+    private val spinnerInputTo: Spinner,
+    private val clickListener: (ConverterItemModel, Spinner, Spinner, Context) -> Unit
 ): RecyclerView.Adapter<ConverterItemAdapter.ConverterItemViewHolder>() {
     inner class ConverterItemViewHolder(private val _binding: ConverterModeListBinding): RecyclerView.ViewHolder(_binding.root) {
-        fun bind(currencyItemModel: ConverterItemModel, context: Context, clickListener: () -> Unit) {
+        fun bind(currencyItemModel: ConverterItemModel, context: Context, spinnerInputFrom: Spinner, spinnerInputTo: Spinner, clickListener: (ConverterItemModel, Spinner, Spinner, Context) -> Unit) {
             _binding.apply {
                 btnItem.text = currencyItemModel.listItemName
                 ivIcon.setImageURI(currencyItemModel.listItemIcon)
                 root.setOnClickListener {
-                    clickListener()
+                    clickListener(currencyItemModel, spinnerInputFrom, spinnerInputTo, context)
                     updateItemsToDefaultColor()
                     updateSelectedColor(cvMain, btnItem)
                 }
@@ -64,6 +67,6 @@ class ConverterItemAdapter (
     }
 
     override fun onBindViewHolder(holder: ConverterItemViewHolder, position: Int) {
-        holder.bind(collections[position], context, clickListener)
+        holder.bind(collections[position], context, spinnerInputFrom, spinnerInputTo, clickListener)
     }
 }

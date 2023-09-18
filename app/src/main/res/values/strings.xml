@@ -11,6 +11,60 @@
         <item>(yd) Yards</item>
         <item>(mi) Miles</item>
     </string-array>
+
+    <string-array name="converter_input_list_mass">
+        <item>(mg) Milligrams</item>
+        <item>(cg) Centigrams</item>
+        <item>(dg) Decigrams</item>
+        <item>(g) Grams</item>
+        <item>(dag) Decagrams</item>
+        <item>(kg) Kilograms</item>
+        <item>(t) Metric tonnes</item>
+        <item>(oz) Ounces</item>
+        <item>(lb) Pounds</item>
+    </string-array>
+
+    <string-array name="converter_input_list_speed">
+        <item>(cm/s) Centimeters per second</item>
+        <item>(m/s) Meters per second</item>
+        <item>(km/h) Kilometers per hour</item>
+        <item>(ft/s) Feet per second</item>
+        <item>(mi/h) Miles per hour</item>
+        <item>(kn) Knots</item>
+        <item>(M) Mach</item>
+    </string-array>
+
+    <string-array name="converter_input_list_temperature">
+        <item>(°C) Celsius</item>
+        <item>(°F) Fahrenheit</item>
+        <item>(K) Kelvin</item>
+    </string-array>
+
+    <string-array name="converter_input_list_angle">
+        <item>(deg) Degrees</item>
+        <item>(rad) Radians</item>
+        <item>(gon) Gradians</item>
+    </string-array>
+
+    <string-array name="converter_input_list_pressure">
+        <item>(atm) Atmospheres</item>
+        <item>(bar) Bars</item>
+        <item>(kPa) Kilopascals</item>
+        <item>(mmHg) Millimeters of mercury</item>
+        <item>(Pa) Pascals</item>
+        <item>(psi) Pounds per square inch</item>
+    </string-array>
+
+    <string-array name="converter_input_list_energy">
+        <item>(eV) Electron volts</item>
+        <item>(J) Joules</item>
+        <item>(kJ) Kilojoules</item>
+        <item>(cal) Thermal calories</item>
+        <item>(kcal) Food calories</item>
+        <item>(ft⋅lb) Foot-pounds</item>
+        <item>(Btu) British thermal units</item>
+        <item>(kW⋅h) Kilowatt-hours</item>
+    </string-array>
     
     <string name="app_name">CalculatorResponsiveTest4</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>

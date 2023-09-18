@@ -1,5 +1,6 @@
 package com.example.calculatorresponsivetest4.ui.converter
 
+import android.content.Context
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -9,8 +10,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.Button
 import android.widget.Spinner
 import android.widget.Toast
+import androidx.cardview.widget.CardView
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.calculatorresponsivetest4.R
@@ -24,6 +28,10 @@ class ConverterFragment : Fragment() {
     private var updatedNumInput: Double = 0.0
     private var positionFrom: String = ""
     private var positionTo: String = ""
+    private lateinit var converterViewModel: ConverterViewModel
+    private lateinit var adapter: ConverterItemAdapter
+    private lateinit var spinnerInputFrom: Spinner
+    private lateinit var spinnerInputTo: Spinner
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -34,14 +42,16 @@ class ConverterFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val converterViewModel = ViewModelProvider(this)[ConverterViewModel::class.java]
+        converterViewModel = ViewModelProvider(this)[ConverterViewModel::class.java]
         _binding = FragmentConverterBinding.inflate(inflater, container, false)
 
         val root: View = binding.root
 
+        spinnerInputFrom = binding.spinnerInputFrom
+        spinnerInputTo = binding.spinnerInputTo
         initRecyclerView()
-        initSpinner(binding.spinnerInputFrom)
-        initSpinner(binding.spinnerInputTo)
+        initSpinner(spinnerInputFrom)
+        initSpinner(spinnerInputTo)
         initInputFromAndToFunction()
 
         return root
@@ -75,7 +85,11 @@ class ConverterFragment : Fragment() {
     }
 
     private fun initRecyclerView() {
-        binding.rvTopSelection.adapter = ConverterItemAdapter(ConverterItems.converterItemList, binding.rvTopSelection, requireContext()) {}
+        adapter = ConverterItemAdapter(ConverterItems.converterItemList, binding.rvTopSelection, requireContext(), spinnerInputFrom, spinnerInputTo) {
+            converterItemModel: ConverterItemModel, spinnerInputFrom: Spinner, spinnerInputTo: Spinner, context: Context ->
+            converterViewModel.initializeSpinnerContent(converterItemModel, spinnerInputFrom, spinnerInputTo, context)
+        }
+        binding.rvTopSelection.adapter = adapter
     }
 
     private fun initSpinner(spinnerInput: Spinner) {
@@ -111,7 +125,6 @@ class ConverterFragment : Fragment() {
                                     if (positionFrom == "") "(nm)" else positionFrom,
                                     if (positionTo == "") "(nm)" else positionTo)
                             }
-                            else -> Toast.makeText(requireContext(), "Undefined selection", Toast.LENGTH_LONG).show()
                         }
 
                         binding.etNumInputTo.setText(UnitConverter.lengthFormula(updatedNumInput, pairValueUnitFrom, pairValueUnitTo))
@@ -141,6 +154,19 @@ class ConverterFragment : Fragment() {
         val inputFrom = unitMap[spinnerInputFrom.substring(1, 3)] ?: ""
         val inputTo = unitMap[spinnerInputTo.substring(1, 3)] ?: ""
         return Pair(inputFrom, inputTo)
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        val itemView = binding.rvTopSelection.findViewHolderForAdapterPosition(0)!!.itemView
+        val cvMain = itemView.findViewById<CardView>(R.id.cvMain)
+        val btnItem = itemView.findViewById<Button>(R.id.btnItem)
+
+        val updatedBGColor = ContextCompat.getColor(requireContext(), R.color.unitConverterClickedItemBGColor)
+        cvMain.setCardBackgroundColor(updatedBGColor)
+        btnItem.setBackgroundColor(updatedBGColor)
+        btnItem.setTextColor(ContextCompat.getColor(requireContext(), R.color.white))
     }
 
     override fun onDestroyView() {
