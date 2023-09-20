@@ -2,8 +2,12 @@ package com.example.calculatorresponsivetest4.ui.converter
 
 import android.content.Context
 import android.widget.ArrayAdapter
+import android.widget.Button
 import android.widget.Spinner
+import androidx.cardview.widget.CardView
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModel
+import androidx.recyclerview.widget.RecyclerView
 import com.example.calculatorresponsivetest4.R
 
 class ConverterViewModel : ViewModel() {
@@ -65,5 +69,34 @@ class ConverterViewModel : ViewModel() {
 //                }
 //            }
         }
+    }
+
+    fun initializeSelectedSpinnerItemID(spinnerInputFrom: String, spinnerInputTo: String): Pair<String, String> {
+        val unitMap = mapOf(
+            "nm" to UnitConverter.nanometer,
+            "µm" to UnitConverter.micrometer,
+            "mm" to UnitConverter.millimeter,
+            "cm" to UnitConverter.centimeter,
+            "m)" to UnitConverter.meter,
+            "km" to UnitConverter.kilometer,
+            "in" to UnitConverter.inch,
+            "ft" to UnitConverter.foot,
+            "yd" to UnitConverter.yard,
+            "mi" to UnitConverter.mile
+        )
+        val inputFrom = unitMap[spinnerInputFrom.substring(1, 3)] ?: ""
+        val inputTo = unitMap[spinnerInputTo.substring(1, 3)] ?: ""
+        return Pair(inputFrom, inputTo)
+    }
+
+    fun initSelectedConversionToLength(rvTopSelection: RecyclerView, context: Context) {
+        val itemView = rvTopSelection.findViewHolderForAdapterPosition(0)!!.itemView
+        val cvMain = itemView.findViewById<CardView>(R.id.cvMain)
+        val btnItem = itemView.findViewById<Button>(R.id.btnItem)
+
+        val updatedBGColor = ContextCompat.getColor(context, R.color.unitConverterClickedItemBGColor)
+        cvMain.setCardBackgroundColor(updatedBGColor)
+        btnItem.setBackgroundColor(updatedBGColor)
+        btnItem.setTextColor(ContextCompat.getColor(context, R.color.white))
     }
 }

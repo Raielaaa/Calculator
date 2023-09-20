@@ -94,6 +94,7 @@
                     android:backgroundTint="@color/operator"
                     android:ems="10"
                     android:inputType="numberDecimal"
+                    android:maxLines="1"
                     android:textAlignment="textEnd"
                     android:textCursorDrawable="@drawable/converter_input_edittext_cursor_bg" />
             </LinearLayout>
@@ -123,15 +124,26 @@
                     android:layout_weight="1"
                     android:backgroundTint="@color/operator" />
 
-                <EditText
-                    android:id="@+id/etNumInputTo"
+                <HorizontalScrollView
                     android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:layout_weight="1"
-                    android:backgroundTint="@color/operator"
-                    android:ems="10"
-                    android:enabled="false"
-                    android:textAlignment="textEnd" />
+                    android:layout_height="match_parent"
+                    android:scrollbars="none"
+                    android:layout_weight="1">
+
+                    <EditText
+                        android:id="@+id/etNumInputTo"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:backgroundTint="@color/operator"
+                        android:ellipsize="end"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:inputType="none"
+                        android:maxLines="1"
+                        android:scrollHorizontally="true"
+                        android:text="                                             "
+                        android:textAlignment="textEnd" />
+                </HorizontalScrollView>
             </LinearLayout>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
