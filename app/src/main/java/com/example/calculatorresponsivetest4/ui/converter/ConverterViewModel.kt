@@ -1,11 +1,14 @@
 package com.example.calculatorresponsivetest4.ui.converter
 
 import android.content.Context
+import android.util.Log
 import android.widget.ArrayAdapter
 import android.widget.Button
+import android.widget.EditText
 import android.widget.Spinner
 import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.recyclerview.widget.RecyclerView
 import com.example.calculatorresponsivetest4.R
@@ -98,5 +101,55 @@ class ConverterViewModel : ViewModel() {
         cvMain.setCardBackgroundColor(updatedBGColor)
         btnItem.setBackgroundColor(updatedBGColor)
         btnItem.setTextColor(ContextCompat.getColor(context, R.color.white))
+    }
+
+    val displayedText: MutableLiveData<StringBuilder> by lazy {
+        MutableLiveData<StringBuilder>().apply {
+            value = StringBuilder()
+        }
+    }
+    fun initButtons(
+        btnZero: Button,
+        btnOne: Button,
+        btnTwo: Button,
+        btnThree: Button,
+        btnFour: Button,
+        btnFive: Button,
+        btnSix: Button,
+        btnSeven: Button,
+        btnEight: Button,
+        btnNine: Button,
+        btnDot: Button,
+        btnReturn: Button,
+        etNumInputFrom: EditText
+    ) {
+        btnDot.setOnClickListener { displayTextToUI(".", etNumInputFrom) }
+        btnZero.setOnClickListener { displayTextToUI("0", etNumInputFrom) }
+        btnOne.setOnClickListener { displayTextToUI("1", etNumInputFrom) }
+        btnTwo.setOnClickListener { displayTextToUI("2", etNumInputFrom) }
+        btnThree.setOnClickListener { displayTextToUI("3", etNumInputFrom) }
+        btnFour.setOnClickListener { displayTextToUI("4", etNumInputFrom) }
+        btnFive.setOnClickListener { displayTextToUI("5", etNumInputFrom) }
+        btnSix.setOnClickListener { displayTextToUI("6", etNumInputFrom) }
+        btnSeven.setOnClickListener { displayTextToUI("7", etNumInputFrom) }
+        btnEight.setOnClickListener { displayTextToUI("8", etNumInputFrom) }
+        btnNine.setOnClickListener { displayTextToUI("9", etNumInputFrom) }
+        btnReturn.setOnClickListener {
+            try {
+                val temp: String = displayedText.value.toString()
+                displayedText.value = StringBuilder(temp.substring(0, temp.length - 1))
+                etNumInputFrom.setText(displayedText.value)
+            } catch (ignored: Exception) { }
+        }
+    }
+
+    private fun displayTextToUI(stringValue: String, etNumInputFrom: EditText) {
+        val currentValue = displayedText.value?.toString() ?: ""
+        if (stringValue == "." && currentValue.isEmpty()) {
+            displayedText.value = StringBuilder("0.")
+        } else if (stringValue != "." || !currentValue.contains(".")) {
+            displayedText.value?.append(stringValue)
+        }
+        etNumInputFrom.setText(displayedText.value)
     }
 }

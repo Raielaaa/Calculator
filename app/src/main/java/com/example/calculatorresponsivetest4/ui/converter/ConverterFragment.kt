@@ -4,17 +4,18 @@ import android.content.Context
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.calculatorresponsivetest4.R
 import com.example.calculatorresponsivetest4.databinding.FragmentConverterBinding
+import java.lang.StringBuilder
 
 class ConverterFragment : Fragment() {
 
@@ -41,12 +42,41 @@ class ConverterFragment : Fragment() {
 
         spinnerInputFrom = binding.spinnerInputFrom
         spinnerInputTo = binding.spinnerInputTo
-        initRecyclerView()
-        initSpinner(spinnerInputFrom)
-        initSpinner(spinnerInputTo)
-        initInputFromAndToFunction()
+        binding.apply {
+            initRecyclerView()
+            initSpinner(spinnerInputFrom)
+            initSpinner(spinnerInputTo)
+            initInputFromAndToFunction()
+            initButtons()
+        }
 
         return root
+    }
+
+    private fun initButtons() {
+        binding.apply {
+            converterViewModel.initButtons(
+                btnZero,
+                btnOne,
+                btnTwo,
+                btnThree,
+                btnFour,
+                btnFive,
+                btnSix,
+                btnSeven,
+                btnEight,
+                btnNine,
+                btnDot,
+                btnReturn,
+                etNumInputFrom
+            )
+
+            btnClear.setOnClickListener {
+                etNumInputFrom.setText("")
+                etNumInputTo.setText("0")
+                converterViewModel.displayedText.value = StringBuilder("")
+            }
+        }
     }
 
     private fun initInputFromAndToFunction() {
@@ -132,33 +162,37 @@ class ConverterFragment : Fragment() {
         binding.apply {
             val selectedInput = spinnerInput.selectedItem.toString()
 
-            val conversionAnswer = when {
-                //  LENGTH
-                resources.getStringArray(R.array.converter_input_list).contains(selectedInput) ->
-                    UnitConverter.getLengthConversionAnswer(updatedNumInput, pairValueUnitFrom, pairValueUnitTo)
-                //  ENERGY
-                resources.getStringArray(R.array.converter_input_list_energy).contains(selectedInput) ->
-                    UnitConverter.getEnergyConversionAnswer(updatedNumInput, spinnerInputFrom.selectedItem, spinnerInputTo.selectedItem)
-                //  PRESSURE
-                resources.getStringArray(R.array.converter_input_list_pressure).contains(selectedInput) ->
-                    UnitConverter.getPressureConversionAnswer(updatedNumInput, spinnerInputFrom.selectedItem, spinnerInputTo.selectedItem)
-                //  SPEED
-                resources.getStringArray(R.array.converter_input_list_speed).contains(selectedInput) ->
-                    UnitConverter.getSpeedConversionAnswer(updatedNumInput, spinnerInputFrom.selectedItem, spinnerInputTo.selectedItem)
-                //  ANGLE
-                resources.getStringArray(R.array.converter_input_list_angle).contains(selectedInput) ->
-                    UnitConverter.getAngleConversionAnswer(updatedNumInput, spinnerInputFrom.selectedItem, spinnerInputTo.selectedItem)
-                // MASS
-                resources.getStringArray(R.array.converter_input_list_mass).contains(selectedInput) ->
-                    UnitConverter.getMassConversionAnswer(updatedNumInput, spinnerInputFrom.selectedItem, spinnerInputTo.selectedItem)
-                //  TEMPERATURE
-                resources.getStringArray(R.array.converter_input_list_temperature).contains(selectedInput) ->
-                    UnitConverter.getTemperatureConversionAnswer(updatedNumInput, spinnerInputFrom.selectedItem, spinnerInputTo.selectedItem)
+            try {
+                val conversionAnswer = when {
+                    //  LENGTH
+                    resources.getStringArray(R.array.converter_input_list).contains(selectedInput) ->
+                        UnitConverter.getLengthConversionAnswer(updatedNumInput, pairValueUnitFrom, pairValueUnitTo)
+                    //  ENERGY
+                    resources.getStringArray(R.array.converter_input_list_energy).contains(selectedInput) ->
+                        UnitConverter.getEnergyConversionAnswer(updatedNumInput, spinnerInputFrom.selectedItem, spinnerInputTo.selectedItem)
+                    //  PRESSURE
+                    resources.getStringArray(R.array.converter_input_list_pressure).contains(selectedInput) ->
+                        UnitConverter.getPressureConversionAnswer(updatedNumInput, spinnerInputFrom.selectedItem, spinnerInputTo.selectedItem)
+                    //  SPEED
+                    resources.getStringArray(R.array.converter_input_list_speed).contains(selectedInput) ->
+                        UnitConverter.getSpeedConversionAnswer(updatedNumInput, spinnerInputFrom.selectedItem, spinnerInputTo.selectedItem)
+                    //  ANGLE
+                    resources.getStringArray(R.array.converter_input_list_angle).contains(selectedInput) ->
+                        UnitConverter.getAngleConversionAnswer(updatedNumInput, spinnerInputFrom.selectedItem, spinnerInputTo.selectedItem)
+                    // MASS
+                    resources.getStringArray(R.array.converter_input_list_mass).contains(selectedInput) ->
+                        UnitConverter.getMassConversionAnswer(updatedNumInput, spinnerInputFrom.selectedItem, spinnerInputTo.selectedItem)
+                    //  TEMPERATURE
+                    resources.getStringArray(R.array.converter_input_list_temperature).contains(selectedInput) ->
+                        UnitConverter.getTemperatureConversionAnswer(updatedNumInput, spinnerInputFrom.selectedItem, spinnerInputTo.selectedItem)
 
-                else -> "Invalid conversion"
+                    else -> "Invalid conversion"
+                }
+
+                etNumInputTo.setText(conversionAnswer)
+            } catch (e: Exception) {
+                etNumInputTo.setText("")
             }
-
-            etNumInputTo.setText(conversionAnswer)
         }
     }
 
