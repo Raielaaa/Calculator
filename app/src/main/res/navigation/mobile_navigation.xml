@@ -20,9 +20,9 @@
 
     <fragment
         android:id="@+id/nav_scientific"
-        android:name="com.example.calculatorresponsivetest4.ui.scientific.ScientificFragment"
+        android:name="com.example.calculatorresponsivetest4.ui.currency.CurrencyFragment"
         android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_scientific" >
+        tools:layout="@layout/fragment_currency" >
         <action
             android:id="@+id/action_nav_scientific_to_nav_home"
             app:destination="@id/nav_home" />

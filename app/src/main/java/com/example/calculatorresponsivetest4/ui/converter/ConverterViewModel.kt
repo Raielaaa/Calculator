@@ -1,7 +1,6 @@
 package com.example.calculatorresponsivetest4.ui.converter
 
 import android.content.Context
-import android.util.Log
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText

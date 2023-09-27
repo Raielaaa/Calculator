@@ -13,8 +13,10 @@ import android.widget.ArrayAdapter
 import android.widget.Spinner
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import com.example.calculatorresponsivetest4.R
 import com.example.calculatorresponsivetest4.databinding.FragmentConverterBinding
+import kotlinx.coroutines.launch
 import java.lang.StringBuilder
 
 class ConverterFragment : Fragment() {

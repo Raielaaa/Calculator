@@ -61,4 +61,7 @@
         <item name="cornerSizeBottomRight">0dp</item>
         <item name="cornerSizeBottomLeft">0dp</item>
     </style>
+    <style name="ProgressBarStyle">
+        <item name="colorAccent">@color/operator</item>
+    </style>
 </resources>
