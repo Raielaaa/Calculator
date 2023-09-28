@@ -15,7 +15,7 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.res.ResourcesCompat
 import com.example.calculatorresponsivetest4.databinding.ActivityMainBinding
-import com.example.calculatorresponsivetest4.ui.CustomTypefaceSpan
+import com.example.calculatorresponsivetest4.utils.CustomTypefaceSpan
 
 class MainActivity : AppCompatActivity() {
 

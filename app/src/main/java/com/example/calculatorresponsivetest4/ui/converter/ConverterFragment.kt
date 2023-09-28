@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.HorizontalScrollView
 import android.widget.Spinner
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -50,9 +51,14 @@ class ConverterFragment : Fragment() {
             initSpinner(spinnerInputTo)
             initInputFromAndToFunction()
             initButtons()
+            initHorizontalScrollView()
         }
 
         return root
+    }
+
+    private fun initHorizontalScrollView() {
+        binding.horizontalScrollView?.fullScroll(HorizontalScrollView.FOCUS_RIGHT)
     }
 
     private fun initButtons() {

@@ -217,7 +217,7 @@
                 android:fontFamily="@font/acme"
                 android:text="@string/clear"
                 android:textColor="@color/operator"
-                android:textSize="22sp"
+                android:textSize="20sp"
                 app:cornerRadius="10dp" />
 
             <Button
@@ -230,7 +230,7 @@
                 android:fontFamily="@font/acme"
                 android:text="@string/sign"
                 android:textColor="@color/operator"
-                android:textSize="22sp"
+                android:textSize="20sp"
                 app:cornerRadius="10dp" />
 
             <Button
@@ -243,7 +243,7 @@
                 android:fontFamily="@font/acme"
                 android:text="@string/percent"
                 android:textColor="@color/operator"
-                android:textSize="22sp"
+                android:textSize="20sp"
                 app:cornerRadius="10dp" />
 
             <Button
@@ -255,7 +255,7 @@
                 android:fontFamily="@font/acme"
                 android:text="@string/divide"
                 android:textColor="@color/operator"
-                android:textSize="22sp"
+                android:textSize="20sp"
                 app:cornerRadius="10dp" />
         </LinearLayout>
 
@@ -277,7 +277,7 @@
                 android:fontFamily="@font/acme"
                 android:text="@string/seven"
                 android:textColor="#000000"
-                android:textSize="22sp"
+                android:textSize="20sp"
                 app:cornerRadius="10dp" />
 
             <Button
@@ -290,7 +290,7 @@
                 android:fontFamily="@font/acme"
                 android:text="@string/eight"
                 android:textColor="#000000"
-                android:textSize="22sp"
+                android:textSize="20sp"
                 app:cornerRadius="10dp" />
 
             <Button
@@ -303,7 +303,7 @@
                 android:fontFamily="@font/acme"
                 android:text="@string/nine"
                 android:textColor="#000000"
-                android:textSize="22sp"
+                android:textSize="20sp"
                 app:cornerRadius="10dp" />
 
             <Button
@@ -315,7 +315,7 @@
                 android:fontFamily="@font/acme"
                 android:text="@string/multiply"
                 android:textColor="@color/operator"
-                android:textSize="22sp"
+                android:textSize="20sp"
                 app:cornerRadius="10dp" />
         </LinearLayout>
 
@@ -337,7 +337,7 @@
                 android:fontFamily="@font/acme"
                 android:text="@string/four"
                 android:textColor="#000000"
-                android:textSize="22sp"
+                android:textSize="20sp"
                 app:cornerRadius="10dp" />
 
             <Button
@@ -350,7 +350,7 @@
                 android:fontFamily="@font/acme"
                 android:text="@string/five"
                 android:textColor="#000000"
-                android:textSize="22sp"
+                android:textSize="20sp"
                 app:cornerRadius="10dp" />
 
             <Button
@@ -363,7 +363,7 @@
                 android:fontFamily="@font/acme"
                 android:text="@string/six"
                 android:textColor="#000000"
-                android:textSize="22sp"
+                android:textSize="20sp"
                 app:cornerRadius="10dp" />
 
             <Button
@@ -375,7 +375,7 @@
                 android:fontFamily="@font/acme"
                 android:text="@string/minus"
                 android:textColor="@color/operator"
-                android:textSize="22sp"
+                android:textSize="20sp"
                 app:cornerRadius="10dp" />
         </LinearLayout>
 
@@ -397,7 +397,7 @@
                 android:fontFamily="@font/acme"
                 android:text="@string/one"
                 android:textColor="#000000"
-                android:textSize="22sp"
+                android:textSize="20sp"
                 app:cornerRadius="10dp" />
 
             <Button
@@ -410,7 +410,7 @@
                 android:fontFamily="@font/acme"
                 android:text="@string/two"
                 android:textColor="#000000"
-                android:textSize="22sp"
+                android:textSize="20sp"
                 app:cornerRadius="10dp" />
 
             <Button
@@ -423,7 +423,7 @@
                 android:fontFamily="@font/acme"
                 android:text="@string/three"
                 android:textColor="#000000"
-                android:textSize="22sp"
+                android:textSize="20sp"
                 app:cornerRadius="10dp" />
 
             <Button
@@ -435,7 +435,7 @@
                 android:fontFamily="@font/acme"
                 android:text="@string/plus"
                 android:textColor="@color/operator"
-                android:textSize="22sp"
+                android:textSize="20sp"
                 app:cornerRadius="10dp" />
         </LinearLayout>
 
@@ -457,7 +457,7 @@
                 android:fontFamily="@font/acme"
                 android:text="@string/returns"
                 android:textColor="#000000"
-                android:textSize="19.5sp"
+                android:textSize="20sp"
                 android:textStyle="bold"
                 app:cornerRadius="10dp" />
 
@@ -471,7 +471,7 @@
                 android:fontFamily="@font/acme"
                 android:text="@string/zero"
                 android:textColor="#000000"
-                android:textSize="22sp"
+                android:textSize="20sp"
                 app:cornerRadius="10dp" />
 
             <Button
@@ -484,7 +484,7 @@
                 android:fontFamily="@font/acme"
                 android:text="@string/point"
                 android:textColor="#000000"
-                android:textSize="22sp"
+                android:textSize="20sp"
                 app:cornerRadius="10dp" />
 
             <Button
