@@ -46,8 +46,8 @@
     <fragment
         android:id="@+id/nav_history"
         android:name="com.example.calculatorresponsivetest4.ui.history.HistoryFragment"
-        android:label="fragment_history"
-        tools:layout="@layout/fragment_history" >
+        android:label="History"
+        tools:layout="@layout/fragment_history">
         <action
             android:id="@+id/action_historyFragment_to_nav_home"
             app:destination="@id/nav_home" />
@@ -55,8 +55,8 @@
     <fragment
         android:id="@+id/nav_settings"
         android:name="com.example.calculatorresponsivetest4.ui.settings.SettingsFragment"
-        android:label="fragment_settings"
-        tools:layout="@layout/fragment_settings" >
+        android:label="Settings"
+        tools:layout="@layout/fragment_settings">
         <action
             android:id="@+id/action_settingsFragment_to_nav_home"
             app:destination="@id/nav_home" />
