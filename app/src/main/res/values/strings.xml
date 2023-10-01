@@ -230,7 +230,7 @@
         <item>(Btu) British thermal units</item>
         <item>(kW⋅h) Kilowatt-hours</item>
     </string-array>
-    
+
     <string name="app_name">CalculatorResponsiveTest4</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -267,4 +267,6 @@
     <string name="dot">.</string>
     <string name="NumberFormat">###,###,###,###,###,###,###,###,###,###,###,###,###,###,###,###,###,###,###,###,###,###,###,###,###.#####</string>
     <string name="NoCommaNumberFormat">###########################################################################.########</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
