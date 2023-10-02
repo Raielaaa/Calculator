@@ -1,10 +1,12 @@
 package com.example.calculatorresponsivetest4
 
+import android.app.usage.UsageEvents.Event.NONE
 import android.graphics.Typeface
 import android.os.Bundle
 import android.text.Spannable
 import android.text.SpannableString
 import android.view.Menu
+import android.view.MenuItem
 import com.google.android.material.navigation.NavigationView
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -16,6 +18,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.res.ResourcesCompat
 import com.example.calculatorresponsivetest4.databinding.ActivityMainBinding
+import com.example.calculatorresponsivetest4.ui.history.DeleteHistoryDialogFragment
 import com.example.calculatorresponsivetest4.utils.CustomTypefaceSpan
 
 class MainActivity : AppCompatActivity() {
@@ -23,6 +26,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
     private lateinit var customTypeface: Typeface
+    var isInHistoryFragment: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,7 +34,6 @@ class MainActivity : AppCompatActivity() {
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
 
         val drawerLayout: DrawerLayout = binding.drawerLayout
         val navView: NavigationView = binding.navView
@@ -57,10 +60,6 @@ class MainActivity : AppCompatActivity() {
         customTypeface = ResourcesCompat.getFont(this, R.font.acme)!!
         // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.main, menu)
-//        supportActionBar?.title = SpannableString("Standard Calculator")
-//            .setSpan(CustomTypefaceSpan(typeface),
-//            0,
-//            )
         val spannableString = SpannableString("Standard Calculator")
         spannableString.setSpan(
             CustomTypefaceSpan(customTypeface),
@@ -76,5 +75,24 @@ class MainActivity : AppCompatActivity() {
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
+    }
+
+    override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
+        val deleteHistoryItem = menu!!.findItem(R.id.action_delete)
+        // Show/hide the "Delete History" bin icon based on the current fragment
+        deleteHistoryItem.isVisible = isInHistoryFragment
+
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.action_delete -> {
+                DeleteHistoryDialogFragment().show(supportFragmentManager, "Confirm delete dialog")
+
+                return true
+            }
+            else -> return super.onOptionsItemSelected(item)
+        }
     }
 }

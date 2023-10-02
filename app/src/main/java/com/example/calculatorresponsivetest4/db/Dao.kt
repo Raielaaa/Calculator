@@ -17,5 +17,5 @@ interface Dao {
     fun getAllEntity(): LiveData<List<Entity>>
 
     @Query("DELETE FROM home_history_table")
-    fun deleteAllEntity()
+    suspend fun deleteAllEntity()
 }

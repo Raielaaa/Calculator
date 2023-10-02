@@ -1,5 +1,6 @@
 package com.example.calculatorresponsivetest4.ui.standard
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
@@ -18,6 +19,7 @@ import com.example.calculatorresponsivetest4.db.DBViewModel
 import com.example.calculatorresponsivetest4.db.DBViewModelFactory
 import com.example.calculatorresponsivetest4.db.Database
 import com.example.calculatorresponsivetest4.db.Entity
+import com.example.calculatorresponsivetest4.ui.history.HistoryAdapter
 import com.google.android.material.snackbar.Snackbar
 import java.text.DecimalFormat
 import javax.script.ScriptEngineManager
@@ -225,6 +227,7 @@ class StandardFragment : Fragment() {
         }
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     private fun configureSpecialButtons() {
         binding.apply {
             homeViewModel.apply {
@@ -339,7 +342,23 @@ class StandardFragment : Fragment() {
                                 } catch (ignored: Exception) { "" }
                             }
                             answerFromVM.value = result
-                            if (formattedEquation.isNotEmpty() && result.isNotEmpty()) { dbViewModel.insertEntityFromVM(Entity(0, "$formattedEquation = $result")) }
+                            if (formattedEquation.isNotEmpty() && result.isNotEmpty()) {
+                                dbViewModel.insertEntityFromVM(
+                                    Entity(
+                                        0,
+                                        initialEquation.value.toString(),
+                                        "= $result",
+                                        "Standard Calculator",
+                                        HistoryAdapter.getCurrentDateTime()
+                                    )
+                                )
+                            }
+                            dbViewModel.getAllEntityFromVM.observe(viewLifecycleOwner) {
+                                HistoryAdapter.apply {
+                                    setList(it)
+                                    notifyDataSetChanged()
+                                }
+                            }
                         }
                     } catch (ignored: Exception) {}
                 }
@@ -357,7 +376,6 @@ class StandardFragment : Fragment() {
                     }
                 }
             }
-//            ivHistory?.setOnClickListener { HomeHistory.newInstance(30).show(childFragmentManager, "HomeBottomSheetDialog") }
         }
     }
 

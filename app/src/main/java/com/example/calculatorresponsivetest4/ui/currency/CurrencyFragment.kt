@@ -7,6 +7,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.calculatorresponsivetest4.databinding.FragmentCurrencyBinding
+import com.example.calculatorresponsivetest4.db.DBViewModel
+import com.example.calculatorresponsivetest4.db.DBViewModelFactory
+import com.example.calculatorresponsivetest4.db.Database
 import com.example.calculatorresponsivetest4.ui.converter.ConverterViewModel
 import java.lang.StringBuilder
 
@@ -15,6 +18,7 @@ class CurrencyFragment : Fragment() {
     private var _binding: FragmentCurrencyBinding? = null
     private lateinit var converterViewModel: ConverterViewModel
     private lateinit var currencyViewModel: CurrencyViewModel
+    private lateinit var dbViewModel: DBViewModel
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -27,6 +31,7 @@ class CurrencyFragment : Fragment() {
     ): View {
         converterViewModel = ViewModelProvider(this)[ConverterViewModel::class.java]
         currencyViewModel = ViewModelProvider(this)[CurrencyViewModel::class.java]
+        dbViewModel = ViewModelProvider(this, DBViewModelFactory(Database.getInstance(requireContext()).dao()))[DBViewModel::class.java]
 
         _binding = FragmentCurrencyBinding.inflate(inflater, container, false)
         val root: View = binding.root
@@ -79,7 +84,8 @@ class CurrencyFragment : Fragment() {
                     etCurrencyFrom.text.toString().toDouble(),
                     this@CurrencyFragment,
                     progressBar,
-                    tvCurrencyDate
+                    tvCurrencyDate,
+                    dbViewModel
                 )
             }
         }

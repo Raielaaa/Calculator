@@ -1,6 +1,7 @@
 package com.example.calculatorresponsivetest4.ui.converter
 
 import android.content.Context
+import android.util.Log
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
@@ -92,14 +93,17 @@ class ConverterViewModel : ViewModel() {
     }
 
     fun initSelectedConversionToLength(rvTopSelection: RecyclerView, context: Context) {
-        val itemView = rvTopSelection.findViewHolderForAdapterPosition(0)!!.itemView
-        val cvMain = itemView.findViewById<CardView>(R.id.cvMain)
-        val btnItem = itemView.findViewById<Button>(R.id.btnItem)
+        try {
+            val itemView = rvTopSelection.findViewHolderForAdapterPosition(0)!!.itemView
+            val cvMain = itemView.findViewById<CardView>(R.id.cvMain)
+            val btnItem = itemView.findViewById<Button>(R.id.btnItem)
 
-        val updatedBGColor = ContextCompat.getColor(context, R.color.unitConverterClickedItemBGColor)
-        cvMain.setCardBackgroundColor(updatedBGColor)
-        btnItem.setBackgroundColor(updatedBGColor)
-        btnItem.setTextColor(ContextCompat.getColor(context, R.color.white))
+            val updatedBGColor = ContextCompat.getColor(context, R.color.unitConverterClickedItemBGColor)
+            cvMain.setCardBackgroundColor(updatedBGColor)
+            btnItem.setBackgroundColor(updatedBGColor)
+            btnItem.setTextColor(ContextCompat.getColor(context, R.color.white))
+        } catch (ignored: Exception) {
+            Log.e("MyTag2", "initSelectedConversionToLength: error occured", ) }
     }
 
     val displayedText: MutableLiveData<StringBuilder> by lazy {

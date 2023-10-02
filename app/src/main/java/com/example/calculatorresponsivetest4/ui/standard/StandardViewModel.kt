@@ -1,10 +1,10 @@
 package com.example.calculatorresponsivetest4.ui.standard
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class StandardViewModel : ViewModel() {
+    private val TAG: String = "MyTag"
 
     val initialEquation: MutableLiveData<String> by lazy {
         MutableLiveData<String>().apply {

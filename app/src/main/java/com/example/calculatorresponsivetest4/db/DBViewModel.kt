@@ -1,8 +1,10 @@
 package com.example.calculatorresponsivetest4.db
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.calculatorresponsivetest4.ui.history.HistoryAdapter
 import kotlinx.coroutines.launch
 
 class DBViewModel(private val dao: Dao): ViewModel() {
@@ -16,4 +18,10 @@ class DBViewModel(private val dao: Dao): ViewModel() {
         dao.deleteAllEntity()
     }
     val getAllEntityFromVM: LiveData<List<Entity>> = dao.getAllEntity()
+
+    init {
+        getAllEntityFromVM.observeForever {
+            HistoryAdapter.setList(it)
+        }
+    }
 }
