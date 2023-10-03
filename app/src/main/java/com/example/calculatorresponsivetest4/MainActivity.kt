@@ -5,6 +5,7 @@ import android.graphics.Typeface
 import android.os.Bundle
 import android.text.Spannable
 import android.text.SpannableString
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import com.google.android.material.navigation.NavigationView
@@ -20,8 +21,9 @@ import androidx.core.content.res.ResourcesCompat
 import com.example.calculatorresponsivetest4.databinding.ActivityMainBinding
 import com.example.calculatorresponsivetest4.ui.history.DeleteHistoryDialogFragment
 import com.example.calculatorresponsivetest4.utils.CustomTypefaceSpan
+import com.jaredrummler.android.colorpicker.ColorPickerDialogListener
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), ColorPickerDialogListener {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
@@ -94,5 +96,17 @@ class MainActivity : AppCompatActivity() {
             }
             else -> return super.onOptionsItemSelected(item)
         }
+    }
+
+    // Implement the ColorPickerDialogListener interface
+    override fun onColorSelected(dialogId: Int, color: Int) {
+        // Handle the selected color here
+        val hexColor = String.format("#%06X", 0xFFFFFF and color)
+        Log.d("MyTag", "onColorSelected: $hexColor")
+        // Use hexColor as needed
+    }
+
+    override fun onDialogDismissed(dialogId: Int) {
+        // Handle dialog dismissal if needed
     }
 }

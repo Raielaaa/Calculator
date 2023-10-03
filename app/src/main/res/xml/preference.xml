@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <PreferenceCategory>
+        <com.jaredrummler.android.colorpicker.ColorPreference
+            android:defaultValue="#eb6767"
+            android:key="default_color"
+            android:summary="Summary"
+            android:title="Title"
+            app:cpv_dialogType="custom"
+            app:cpv_showAlphaSlider="true"
+            app:cpv_colorShape="circle"
+            app:cpv_showColorShades="true"
+            app:cpv_allowCustom="true"
+            app:cpv_showDialog="true"/>
+    </PreferenceCategory>
+</PreferenceScreen>
