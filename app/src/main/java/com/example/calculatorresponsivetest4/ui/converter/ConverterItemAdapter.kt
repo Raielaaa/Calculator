@@ -1,6 +1,7 @@
 package com.example.calculatorresponsivetest4.ui.converter
 
 import android.content.Context
+import android.content.res.Configuration
 import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -20,6 +21,7 @@ class ConverterItemAdapter (
     private val spinnerInputTo: Spinner,
     private val clickListener: (ConverterItemModel, Spinner, Spinner, Context) -> Unit
 ): RecyclerView.Adapter<ConverterItemAdapter.ConverterItemViewHolder>() {
+    private var updatedBGColor: Int = 0
     inner class ConverterItemViewHolder(private val _binding: ConverterModeListBinding): RecyclerView.ViewHolder(_binding.root) {
         fun bind(currencyItemModel: ConverterItemModel, context: Context, spinnerInputFrom: Spinner, spinnerInputTo: Spinner, clickListener: (ConverterItemModel, Spinner, Spinner, Context) -> Unit) {
             _binding.apply {
@@ -39,8 +41,14 @@ class ConverterItemAdapter (
             val itemView = rvTopSelection.findViewHolderForAdapterPosition(position)?.itemView
             val cvMain = itemView?.findViewById<CardView>(R.id.cvMain)
             val btnItem = itemView?.findViewById<Button>(R.id.btnItem)
+
+            // Checks if the app/device is in dark mode or not
             if (cvMain != null && btnItem != null) {
-                val updatedBGColor = ContextCompat.getColor(context, R.color.enabledColorUnitConverter)
+                updatedBGColor = if (context.resources.configuration.uiMode and
+                    Configuration.UI_MODE_NIGHT_MASK == Configuration.UI_MODE_NIGHT_YES)
+                    ContextCompat.getColor(context, R.color.darkModeListColor)
+                else ContextCompat.getColor(context, R.color.enabledColorUnitConverter)
+
                 cvMain.setCardBackgroundColor(updatedBGColor)
                 btnItem.setBackgroundColor(updatedBGColor)
                 btnItem.setTextColor(ContextCompat.getColor(context, R.color.enabledColor))

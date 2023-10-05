@@ -47,13 +47,13 @@
 
             <EditText
                 android:id="@+id/etCurrencyFrom"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/fragment_currency_from_bg"
                 android:ems="10"
                 android:enabled="false"
                 android:hint="0.0"
                 android:inputType="numberDecimal"
+                android:background="@drawable/fragment_currency_from_bg"
                 android:padding="10dp"
                 android:textAlignment="textEnd"
                 android:textColor="#757575"
@@ -63,6 +63,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/spCurrencyFrom" />
 
             <TextView
+                android:layout_marginStart="@dimen/_15sdp"
                 android:id="@+id/textView7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -86,14 +87,16 @@
 
             <TextView
                 android:id="@+id/tvCurrencyTo"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="10dp"
+                android:background="@drawable/fragment_currency_from_bg"
+                android:padding="10dp"
                 android:text="0"
                 android:textAlignment="textEnd"
                 android:textColor="#D2000000"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/spCurrencyTo" />
 
             <TextView

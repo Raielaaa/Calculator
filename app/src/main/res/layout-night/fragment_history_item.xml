@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#242424"
+    android:paddingStart="@dimen/_10sdp"
+    android:paddingTop="@dimen/_10sdp"
+    android:paddingEnd="@dimen/_10sdp">
+
+    <TextView
+        android:id="@+id/tvCurrentDateTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Monday, Augutst 10, 10:15 am"
+        android:textColor="#b8b8b8"
+        android:textSize="@dimen/_10sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvHistorySolution"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:text="35 + 28"
+        android:textColor="@color/operator"
+        android:textSize="@dimen/_30sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvCurrentDateTime" />
+
+    <TextView
+        android:id="@+id/tvHistoryAnswer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="= 63"
+        android:textColor="#FFFFFF"
+        android:textSize="@dimen/_20sdp"
+        app:layout_constraintEnd_toEndOf="@+id/tvHistorySolution"
+        app:layout_constraintTop_toBottomOf="@+id/tvHistorySolution" />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="@dimen/_1sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:background="#48CCCCCC"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvHistoryAnswer" />
+
+    <TextView
+        android:id="@+id/tvMode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Standard calculator"
+        android:textSize="@dimen/_10ssp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvHistoryAnswer"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tvHistoryAnswer" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

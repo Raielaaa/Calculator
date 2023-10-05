@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#191919"
     tools:context=".ui.standard.StandardFragment">
 
     <androidx.constraintlayout.widget.Guideline
@@ -58,6 +59,7 @@
             android:layout_height="match_parent"
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
+            android:fontFamily="@font/acme"
             android:gravity="center"
             android:text="MC"
             android:textSize="16sp" />
@@ -68,6 +70,7 @@
             android:layout_height="match_parent"
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
+            android:fontFamily="@font/acme"
             android:gravity="center"
             android:text="MR"
             android:textSize="16sp" />
@@ -78,6 +81,7 @@
             android:layout_height="match_parent"
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
+            android:fontFamily="@font/acme"
             android:gravity="center"
             android:text="MS"
             android:textSize="16sp" />
@@ -88,6 +92,7 @@
             android:layout_height="match_parent"
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
+            android:fontFamily="@font/acme"
             android:gravity="center"
             android:text="M+"
             android:textSize="16sp" />
@@ -98,6 +103,7 @@
             android:layout_height="match_parent"
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
+            android:fontFamily="@font/acme"
             android:gravity="center"
             android:text="M-"
             android:textSize="16sp" />
@@ -107,6 +113,7 @@
         android:id="@+id/cardView"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        app:cardBackgroundColor="#00FFFFFF"
         app:cardElevation="0dp"
         app:cardMaxElevation="0dp"
         app:layout_constraintBottom_toTopOf="@+id/guidelineMiddle"
@@ -117,7 +124,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/fragment_home_cardview_bg_light"
+            android:background="@drawable/fragment_home_cardview_bg"
             android:orientation="vertical">
 
             <LinearLayout
@@ -134,6 +141,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    android:fontFamily="@font/acme"
                     android:text="Memory: "
                     android:textSize="14sp" />
 
@@ -142,6 +150,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="50"
+                    android:fontFamily="@font/acme"
                     android:text="Standard  |  0"
                     android:textSize="14sp" />
 
@@ -150,6 +159,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:fontFamily="@font/acme"
                     android:text="negate(n): " />
 
                 <TextView
@@ -157,6 +167,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:fontFamily="@font/acme"
                     android:text="0" />
             </LinearLayout>
 
@@ -184,7 +195,7 @@
                 android:layout_weight="1"
                 android:fontFamily="@font/acme"
                 android:gravity="end"
-                android:textColor="#000000"
+                android:textColor="#FFFFFF"
                 android:textSize="24sp" />
 
         </LinearLayout>
@@ -213,7 +224,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginEnd="10dp"
                 android:layout_weight="1"
-                android:backgroundTint="#F7F7F7"
+                android:backgroundTint="#242424"
                 android:fontFamily="@font/acme"
                 android:text="@string/clear"
                 android:textColor="@color/operator"
@@ -226,7 +237,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginEnd="10dp"
                 android:layout_weight="1"
-                android:backgroundTint="#F7F7F7"
+                android:backgroundTint="#242424"
                 android:fontFamily="@font/acme"
                 android:text="@string/sign"
                 android:textColor="@color/operator"
@@ -239,7 +250,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginEnd="10dp"
                 android:layout_weight="1"
-                android:backgroundTint="#F7F7F7"
+                android:backgroundTint="#242424"
                 android:fontFamily="@font/acme"
                 android:text="@string/percent"
                 android:textColor="@color/operator"
@@ -251,7 +262,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:backgroundTint="#F7F7F7"
+                android:backgroundTint="#242424"
                 android:fontFamily="@font/acme"
                 android:text="@string/divide"
                 android:textColor="@color/operator"
@@ -273,10 +284,10 @@
                 android:layout_height="match_parent"
                 android:layout_marginEnd="10dp"
                 android:layout_weight="1"
-                android:backgroundTint="#F7F7F7"
                 android:fontFamily="@font/acme"
                 android:text="@string/seven"
-                android:textColor="#000000"
+                android:backgroundTint="#242424"
+                android:textColor="#FFFFFF"
                 android:textSize="22sp"
                 app:cornerRadius="10dp" />
 
@@ -286,10 +297,10 @@
                 android:layout_height="match_parent"
                 android:layout_marginEnd="10dp"
                 android:layout_weight="1"
-                android:backgroundTint="#F7F7F7"
+                android:backgroundTint="#242424"
                 android:fontFamily="@font/acme"
                 android:text="@string/eight"
-                android:textColor="#000000"
+                android:textColor="#FFFFFF"
                 android:textSize="22sp"
                 app:cornerRadius="10dp" />
 
@@ -299,10 +310,10 @@
                 android:layout_height="match_parent"
                 android:layout_marginEnd="10dp"
                 android:layout_weight="1"
-                android:backgroundTint="#F7F7F7"
+                android:backgroundTint="#242424"
                 android:fontFamily="@font/acme"
                 android:text="@string/nine"
-                android:textColor="#000000"
+                android:textColor="#FFFFFF"
                 android:textSize="22sp"
                 app:cornerRadius="10dp" />
 
@@ -311,7 +322,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:backgroundTint="#F7F7F7"
+                android:backgroundTint="#242424"
                 android:fontFamily="@font/acme"
                 android:text="@string/multiply"
                 android:textColor="@color/operator"
@@ -333,10 +344,10 @@
                 android:layout_height="match_parent"
                 android:layout_marginEnd="10dp"
                 android:layout_weight="1"
-                android:backgroundTint="#F7F7F7"
+                android:backgroundTint="#242424"
                 android:fontFamily="@font/acme"
                 android:text="@string/four"
-                android:textColor="#000000"
+                android:textColor="#FFFFFF"
                 android:textSize="22sp"
                 app:cornerRadius="10dp" />
 
@@ -346,10 +357,10 @@
                 android:layout_height="match_parent"
                 android:layout_marginEnd="10dp"
                 android:layout_weight="1"
-                android:backgroundTint="#F7F7F7"
+                android:backgroundTint="#242424"
                 android:fontFamily="@font/acme"
                 android:text="@string/five"
-                android:textColor="#000000"
+                android:textColor="#FFFFFF"
                 android:textSize="22sp"
                 app:cornerRadius="10dp" />
 
@@ -359,10 +370,10 @@
                 android:layout_height="match_parent"
                 android:layout_marginEnd="10dp"
                 android:layout_weight="1"
-                android:backgroundTint="#F7F7F7"
+                android:backgroundTint="#242424"
                 android:fontFamily="@font/acme"
                 android:text="@string/six"
-                android:textColor="#000000"
+                android:textColor="#FFFFFF"
                 android:textSize="22sp"
                 app:cornerRadius="10dp" />
 
@@ -371,7 +382,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:backgroundTint="#F7F7F7"
+                android:backgroundTint="#242424"
                 android:fontFamily="@font/acme"
                 android:text="@string/minus"
                 android:textColor="@color/operator"
@@ -393,10 +404,10 @@
                 android:layout_height="match_parent"
                 android:layout_marginEnd="10dp"
                 android:layout_weight="1"
-                android:backgroundTint="#F7F7F7"
+                android:backgroundTint="#242424"
                 android:fontFamily="@font/acme"
                 android:text="@string/one"
-                android:textColor="#000000"
+                android:textColor="#FFFFFF"
                 android:textSize="22sp"
                 app:cornerRadius="10dp" />
 
@@ -406,10 +417,10 @@
                 android:layout_height="match_parent"
                 android:layout_marginEnd="10dp"
                 android:layout_weight="1"
-                android:backgroundTint="#F7F7F7"
+                android:backgroundTint="#242424"
                 android:fontFamily="@font/acme"
                 android:text="@string/two"
-                android:textColor="#000000"
+                android:textColor="#FFFFFF"
                 android:textSize="22sp"
                 app:cornerRadius="10dp" />
 
@@ -419,10 +430,10 @@
                 android:layout_height="match_parent"
                 android:layout_marginEnd="10dp"
                 android:layout_weight="1"
-                android:backgroundTint="#F7F7F7"
+                android:backgroundTint="#242424"
                 android:fontFamily="@font/acme"
                 android:text="@string/three"
-                android:textColor="#000000"
+                android:textColor="#FFFFFF"
                 android:textSize="22sp"
                 app:cornerRadius="10dp" />
 
@@ -431,7 +442,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:backgroundTint="#F7F7F7"
+                android:backgroundTint="#242424"
                 android:fontFamily="@font/acme"
                 android:text="@string/plus"
                 android:textColor="@color/operator"
@@ -453,10 +464,10 @@
                 android:layout_height="match_parent"
                 android:layout_marginEnd="10dp"
                 android:layout_weight="1"
-                android:backgroundTint="#F7F7F7"
+                android:backgroundTint="#242424"
                 android:fontFamily="@font/acme"
                 android:text="@string/returns"
-                android:textColor="#000000"
+                android:textColor="#FFFFFF"
                 android:textSize="19.5sp"
                 android:textStyle="bold"
                 app:cornerRadius="10dp" />
@@ -467,10 +478,10 @@
                 android:layout_height="match_parent"
                 android:layout_marginEnd="10dp"
                 android:layout_weight="1"
-                android:backgroundTint="#F7F7F7"
+                android:backgroundTint="#242424"
                 android:fontFamily="@font/acme"
                 android:text="@string/zero"
-                android:textColor="#000000"
+                android:textColor="#FFFFFF"
                 android:textSize="22sp"
                 app:cornerRadius="10dp" />
 
@@ -480,10 +491,10 @@
                 android:layout_height="match_parent"
                 android:layout_marginEnd="10dp"
                 android:layout_weight="1"
-                android:backgroundTint="#F7F7F7"
+                android:backgroundTint="#242424"
                 android:fontFamily="@font/acme"
                 android:text="@string/point"
-                android:textColor="#000000"
+                android:textColor="#FFFFFF"
                 android:textSize="22sp"
                 app:cornerRadius="10dp" />
 

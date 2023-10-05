@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#242424"
     android:padding="@dimen/_15sdp"
     tools:context=".ui.settings.SettingsFragment">
 
@@ -34,7 +35,7 @@
         android:layout_marginTop="@dimen/_20sdp"
         android:text="Display theme"
         android:textSize="@dimen/_13ssp"
-        android:textColor="#000000"
+        android:textColor="#FFFFFF"
         app:layout_constraintStart_toStartOf="@+id/textView3"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
@@ -44,7 +45,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_5sdp"
         android:text="Enable dark theme on display"
-        android:textColor="#52000000"
+        android:textColor="#D0F7F7F7"
         android:textSize="@dimen/_12ssp"
         app:layout_constraintStart_toStartOf="@+id/textView8"
         app:layout_constraintTop_toBottomOf="@+id/textView8" />
@@ -54,7 +55,7 @@
         android:layout_width="0dp"
         android:layout_height="@dimen/_1sdp"
         android:layout_marginTop="@dimen/_10sdp"
-        android:background="#0D000000"
+        android:background="#D0F7F7F7"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -77,7 +78,7 @@
         android:layout_marginTop="@dimen/_10sdp"
         android:text="Text color theme"
         android:textSize="@dimen/_13ssp"
-        android:textColor="#000000"
+        android:textColor="#FFFFFF"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view" />
 
@@ -87,7 +88,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_5sdp"
         android:text="Change your font color"
-        android:textColor="#52000000"
+        android:textColor="#D0F7F7F7"
         android:textSize="@dimen/_12ssp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView10" />
@@ -97,7 +98,7 @@
         android:layout_width="0dp"
         android:layout_height="@dimen/_1sdp"
         android:layout_marginTop="@dimen/_10sdp"
-        android:background="#0D000000"
+        android:background="#D0F7F7F7"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -109,7 +110,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_10sdp"
         android:text="Font"
-        android:textColor="#000000"
+        android:textColor="#FFFFFF"
         android:textSize="@dimen/_13ssp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view2" />
@@ -120,7 +121,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_5sdp"
         android:text="Change your app font"
-        android:textColor="#52000000"
+        android:textColor="#D0F7F7F7"
         android:textSize="@dimen/_12ssp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView12" />
@@ -130,7 +131,7 @@
         android:layout_width="0dp"
         android:layout_height="@dimen/_1sdp"
         android:layout_marginTop="@dimen/_10sdp"
-        android:background="#0D000000"
+        android:background="#D0F7F7F7"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -142,7 +143,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_10sdp"
         android:text="Vibrate"
-        android:textColor="#000000"
+        android:textColor="#FFFFFF"
         android:textSize="@dimen/_13ssp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view3" />
@@ -153,7 +154,7 @@
         android:layout_height="wrap_content"
         android:text="Enable vibration on key press"
         android:layout_marginTop="@dimen/_5sdp"
-        android:textColor="#52000000"
+        android:textColor="#D0F7F7F7"
         android:textSize="@dimen/_12ssp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView14" />
@@ -196,7 +197,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_10sdp"
         android:text="About"
-        android:textColor="#000000"
+        android:textColor="#FFFFFF"
         android:textSize="@dimen/_13ssp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView16" />

@@ -47,7 +47,7 @@
 
             <EditText
                 android:id="@+id/etCurrencyFrom"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/fragment_currency_from_bg"
                 android:ems="10"
@@ -68,6 +68,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="35dp"
                 android:text="To"
+                android:layout_marginStart="@dimen/_15sdp"
                 android:textColor="@color/operator"
                 android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -86,10 +87,11 @@
 
             <TextView
                 android:id="@+id/tvCurrencyTo"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="10dp"
+                android:background="@drawable/fragment_currency_from_bg"
                 android:text="0"
+                android:padding="10dp"
                 android:textAlignment="textEnd"
                 android:textColor="#D2000000"
                 android:textSize="34sp"

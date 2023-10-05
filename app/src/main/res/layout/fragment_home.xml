@@ -117,7 +117,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/fragment_home_cardview_bg"
+            android:background="@drawable/fragment_home_cardview_bg_light"
             android:orientation="vertical">
 
             <LinearLayout

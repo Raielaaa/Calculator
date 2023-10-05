@@ -231,6 +231,13 @@
         <item>(kW⋅h) Kilowatt-hours</item>
     </string-array>
 
+    <string-array name="font_family_list">
+        <item>Acme</item>
+        <item>Open sans</item>
+        <item>Poppins</item>
+        <item>Roboto</item>
+    </string-array>
+
     <string name="app_name">Calculator</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>

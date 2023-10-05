@@ -1,6 +1,9 @@
 package com.example.calculatorresponsivetest4
 
 import android.app.usage.UsageEvents.Event.NONE
+import android.content.SharedPreferences
+import android.content.res.Configuration
+import android.content.res.Resources.Theme
 import android.graphics.Typeface
 import android.os.Bundle
 import android.text.Spannable
@@ -28,25 +31,20 @@ class MainActivity : AppCompatActivity(), ColorPickerDialogListener {
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
     private lateinit var customTypeface: Typeface
+    private lateinit var sharedPreferences: SharedPreferences
     var isInHistoryFragment: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
+        sharedPreferences = getSharedPreferences("SP_Calculator", MODE_PRIVATE)
+        initTheme()
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         val drawerLayout: DrawerLayout = binding.drawerLayout
         val navView: NavigationView = binding.navView
         val navController = findNavController(R.id.nav_host_fragment_content_main)
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
-//        supportActionBar?.apply {
-//            setDisplayHomeAsUpEnabled(true)
-//            setHomeAsUpIndicator(R.drawable.ic_hamburger)
-//            title = "Standard Calculator"
-//        }
         setSupportActionBar(binding.appBarMain.toolbar)
 
         appBarConfiguration = AppBarConfiguration(
@@ -56,6 +54,11 @@ class MainActivity : AppCompatActivity(), ColorPickerDialogListener {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+    }
+
+    private fun initTheme() {
+        if (sharedPreferences.getBoolean("DarkMode_key", false)) AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        else AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
