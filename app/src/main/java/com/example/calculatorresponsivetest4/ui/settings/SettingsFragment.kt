@@ -5,6 +5,7 @@ import android.content.Context.MODE_PRIVATE
 import android.content.SharedPreferences
 import android.content.SharedPreferences.Editor
 import android.content.res.Configuration
+import android.graphics.Color
 import android.graphics.Typeface
 import android.os.Bundle
 import android.util.Log
@@ -17,6 +18,7 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
@@ -54,6 +56,12 @@ class SettingsFragment : Fragment() {
             val selectedColor = newValue as Int
             val hexColor = String.format("#%06X", 0xFFFFFF and selectedColor)
             // Use hexColor as needed
+            binding.ivChangeColor.setCardBackgroundColor(Color.parseColor(hexColor))
+            editor.apply {
+                putString("Color_key", hexColor)
+                commit()
+            }
+
             true
         }
 
@@ -81,5 +89,13 @@ class SettingsFragment : Fragment() {
             boolFromPref = sharedPreferences.getBoolean("Vibrate_key", false))
     }
 
-    private fun initViews() = settingsViewModel.updateSwitch(binding.swDisplayTheme, requireContext())
+    private fun initViews() {
+        binding.apply {
+            settingsViewModel.updateSwitch(swDisplayTheme, requireContext())
+
+            Log.d("MyTag", "initViews: ${R.color.operator}")
+            Log.d("MyTag", "initViews_sp: ${sharedPreferences.getString("Color_key", "#${R.color.operator}")}")
+            ivChangeColor.setCardBackgroundColor(Color.parseColor(sharedPreferences.getString("Color_key", "#${R.color.operator}")))
+        }
+    }
 }

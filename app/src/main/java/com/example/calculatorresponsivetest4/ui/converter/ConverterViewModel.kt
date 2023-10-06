@@ -12,6 +12,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.recyclerview.widget.RecyclerView
 import com.example.calculatorresponsivetest4.R
+import com.example.calculatorresponsivetest4.utils.CustomVibrate
 
 class ConverterViewModel : ViewModel() {
     fun initializeSpinnerContent(converterItemModel: ConverterItemModel, spinnerInputFrom: Spinner, spinnerInputTo: Spinner, context: Context) {
@@ -124,19 +125,20 @@ class ConverterViewModel : ViewModel() {
         btnNine: Button,
         btnDot: Button,
         btnReturn: Button,
-        etNumInputFrom: EditText
+        etNumInputFrom: EditText,
+        context: Context
     ) {
-        btnDot.setOnClickListener { displayTextToUI(".", etNumInputFrom) }
-        btnZero.setOnClickListener { displayTextToUI("0", etNumInputFrom) }
-        btnOne.setOnClickListener { displayTextToUI("1", etNumInputFrom) }
-        btnTwo.setOnClickListener { displayTextToUI("2", etNumInputFrom) }
-        btnThree.setOnClickListener { displayTextToUI("3", etNumInputFrom) }
-        btnFour.setOnClickListener { displayTextToUI("4", etNumInputFrom) }
-        btnFive.setOnClickListener { displayTextToUI("5", etNumInputFrom) }
-        btnSix.setOnClickListener { displayTextToUI("6", etNumInputFrom) }
-        btnSeven.setOnClickListener { displayTextToUI("7", etNumInputFrom) }
-        btnEight.setOnClickListener { displayTextToUI("8", etNumInputFrom) }
-        btnNine.setOnClickListener { displayTextToUI("9", etNumInputFrom) }
+        btnDot.setOnClickListener { displayTextToUI(".", etNumInputFrom, context) }
+        btnZero.setOnClickListener { displayTextToUI("0", etNumInputFrom, context) }
+        btnOne.setOnClickListener { displayTextToUI("1", etNumInputFrom, context) }
+        btnTwo.setOnClickListener { displayTextToUI("2", etNumInputFrom, context) }
+        btnThree.setOnClickListener { displayTextToUI("3", etNumInputFrom, context) }
+        btnFour.setOnClickListener { displayTextToUI("4", etNumInputFrom, context) }
+        btnFive.setOnClickListener { displayTextToUI("5", etNumInputFrom, context) }
+        btnSix.setOnClickListener { displayTextToUI("6", etNumInputFrom, context) }
+        btnSeven.setOnClickListener { displayTextToUI("7", etNumInputFrom, context) }
+        btnEight.setOnClickListener { displayTextToUI("8", etNumInputFrom, context) }
+        btnNine.setOnClickListener { displayTextToUI("9", etNumInputFrom, context) }
         btnReturn.setOnClickListener {
             try {
                 val temp: String = displayedText.value.toString()
@@ -146,7 +148,8 @@ class ConverterViewModel : ViewModel() {
         }
     }
 
-    private fun displayTextToUI(stringValue: String, etNumInputFrom: EditText) {
+    private fun displayTextToUI(stringValue: String, etNumInputFrom: EditText, context: Context) {
+        CustomVibrate.vibrate(50, context)
         val currentValue = displayedText.value?.toString() ?: ""
         if (stringValue == "." && currentValue.isEmpty()) {
             displayedText.value = StringBuilder("0.")

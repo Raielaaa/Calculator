@@ -79,12 +79,14 @@ class StandardFragment : Fragment() {
         binding.apply {
             editor.apply {
                 tvMC.setOnClickListener {
+                    CustomVibrate.vibrate(50, requireContext())
                     configureMemoryTextView(false, tvMR)
                     putString("Memory", "0")
                     apply()
                     tvMemoryMode.text = "MC  |  ${sharedPreferences.getString("Memory", "0")}"
                 }
                 tvMR.setOnClickListener {
+                    CustomVibrate.vibrate(50, requireContext())
                     try {
                         homeViewModel.isMemoryButtonSelected.value = true
                         if (sharedPreferences.getString("Memory", "0").toString() != "0") {
@@ -98,6 +100,7 @@ class StandardFragment : Fragment() {
                     } catch (ignored: Exception) { }
                 }
                 tvMS.setOnClickListener {
+                    CustomVibrate.vibrate(50, requireContext())
                     try {
                         if (homeViewModel.isEqualsSelected.value == true) {
                             putString("Memory",
@@ -109,6 +112,7 @@ class StandardFragment : Fragment() {
                     } catch (ignored: Exception) { }
                 }
                 tvMPlus.setOnClickListener {
+                    CustomVibrate.vibrate(50, requireContext())
                     try {
                         if (homeViewModel.isEqualsSelected.value == true) {
                             val numberToBeConfigured: Double = homeViewModel.answerFromVM.value!!.replace("=", "").replace(" ", "").replace(",", "").toDouble()
@@ -120,6 +124,7 @@ class StandardFragment : Fragment() {
                     } catch (ignored: Exception) { }
                 }
                 tvMMinus.setOnClickListener {
+                    CustomVibrate.vibrate(50, requireContext())
                     try {
                         if (homeViewModel.isEqualsSelected.value == true) {
                             val numberToBeConfigured: Double = homeViewModel.answerFromVM.value!!.replace("=", "").replace(" ", "").replace(",", "").toDouble()
@@ -232,6 +237,7 @@ class StandardFragment : Fragment() {
         binding.apply {
             homeViewModel.apply {
                 btnPoint.setOnClickListener {
+                    CustomVibrate.vibrate(50, requireContext())
                     if (pointUsageIdentifier) {
                         inputtedValue.append(resources.getString(R.string.dot))
                         initialEquation.value = inputtedValue.toString()
@@ -240,6 +246,7 @@ class StandardFragment : Fragment() {
                 }
 
                 btnPercent.setOnClickListener {
+                    CustomVibrate.vibrate(50, requireContext())
                     if (tvAnswer.text.isNotEmpty() && tvSolution.text.isNotEmpty()) {
                         inputtedValue.setLength(0)
                         inputtedValue.append(tvAnswer.text.toString().replace("=", "") + " ${resources.getString(R.string.percent)} ")
@@ -263,6 +270,7 @@ class StandardFragment : Fragment() {
                 }
 
                 btnReturns.setOnClickListener {
+                    CustomVibrate.vibrate(50, requireContext())
                     try {
                         initialEquation.value = when (inputtedValue.length) {
                             1 -> ""
@@ -279,6 +287,7 @@ class StandardFragment : Fragment() {
                 }
 
                 btnAC.setOnClickListener {
+                    CustomVibrate.vibrate(50, requireContext())
                     if (sharedPreferences.getString("Memory", "0") == "0" || sharedPreferences.getString("Memory", "0") == "") {
                         configureMemoryTextView(false, tvMR)
                         configureMemoryTextView(false, tvMC)
@@ -304,6 +313,7 @@ class StandardFragment : Fragment() {
                 }
 
                 btnEquals.setOnClickListener {
+                    CustomVibrate.vibrate(50, requireContext())
                     isEqualsSelected.value = true
                     isMemoryButtonSelected.value = false
 
@@ -364,6 +374,7 @@ class StandardFragment : Fragment() {
                 }
 
                 btnSign.setOnClickListener {
+                    CustomVibrate.vibrate(50, requireContext())
                     val currentAnswer = answerFromVM.value ?: ""
                     if (currentAnswer.isNotEmpty()) {
                         negateCount.value = negateCount.value?.plus(1)
@@ -417,6 +428,7 @@ class StandardFragment : Fragment() {
 
             for ((button, stringResource) in operatorButtons) {
                 button.setOnClickListener {
+                    CustomVibrate.vibrate(50, requireContext())
                     if (homeViewModel.isEqualsSelected.value == true && stringResource != R.string.dot && homeViewModel.isMemoryButtonSelected.value != true) {
                         inputtedValue.setLength(0)
                         homeViewModel.initialEquation.value = ""

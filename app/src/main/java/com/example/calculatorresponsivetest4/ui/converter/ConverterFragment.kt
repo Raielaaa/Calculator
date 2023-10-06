@@ -17,6 +17,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.example.calculatorresponsivetest4.R
 import com.example.calculatorresponsivetest4.databinding.FragmentConverterBinding
+import com.example.calculatorresponsivetest4.utils.CustomVibrate
 import kotlinx.coroutines.launch
 import java.lang.StringBuilder
 
@@ -76,10 +77,12 @@ class ConverterFragment : Fragment() {
                 btnNine,
                 btnDot,
                 btnReturn,
-                etNumInputFrom
+                etNumInputFrom,
+                requireContext()
             )
 
             btnClear.setOnClickListener {
+                CustomVibrate.vibrate(50, requireContext())
                 etNumInputFrom.setText("")
                 etNumInputTo.setText("0")
                 converterViewModel.displayedText.value = StringBuilder("")

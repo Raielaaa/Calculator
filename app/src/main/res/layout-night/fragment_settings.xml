@@ -152,7 +152,7 @@
         android:id="@+id/textView15"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Enable vibration on key press"
+        android:text="Enable vibration on button press"
         android:layout_marginTop="@dimen/_5sdp"
         android:textColor="#D0F7F7F7"
         android:textSize="@dimen/_12ssp"
@@ -202,11 +202,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView16" />
 
-    <ImageView
+    <androidx.cardview.widget.CardView
         android:id="@+id/ivChangeColor"
+        android:layout_marginEnd="@dimen/_4sdp"
+        app:cardCornerRadius="@dimen/_8sdp"
+        android:backgroundTint="@color/operator"
         android:layout_width="@dimen/_30sdp"
         android:layout_height="@dimen/_30sdp"
-        android:src="@drawable/baseline_color_lens_24"
         app:layout_constraintBottom_toBottomOf="@+id/textView11"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textView10" />

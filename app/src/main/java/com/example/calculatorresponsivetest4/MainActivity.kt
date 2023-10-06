@@ -3,7 +3,7 @@ package com.example.calculatorresponsivetest4
 import android.app.usage.UsageEvents.Event.NONE
 import android.content.SharedPreferences
 import android.content.res.Configuration
-import android.content.res.Resources.Theme
+import androidx.appcompat.widget.Toolbar
 import android.graphics.Typeface
 import android.os.Bundle
 import android.text.Spannable
@@ -11,6 +11,8 @@ import android.text.SpannableString
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
+//import android.widget.Toolbar
 import com.google.android.material.navigation.NavigationView
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -20,6 +22,7 @@ import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.appcompat.widget.PopupMenu
 import androidx.core.content.res.ResourcesCompat
 import com.example.calculatorresponsivetest4.databinding.ActivityMainBinding
 import com.example.calculatorresponsivetest4.ui.history.DeleteHistoryDialogFragment
@@ -54,7 +57,40 @@ class MainActivity : AppCompatActivity(), ColorPickerDialogListener {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
+//        // Get the action_settings item from the toolbar
+//        val settingsItem = findViewById<View>(R.id.action_settings)
+//
+//        // Set a click listener for the action_settings item
+//        settingsItem.setOnClickListener {
+//            showPopupMenu(it)
+//        }
     }
+
+//    private fun showPopupMenu(view: View) {
+//        val popupMenu = PopupMenu(this, view)
+//        popupMenu.inflate(R.menu.popup_menu)
+//
+//        // Set a listener for menu item clicks
+//        popupMenu.setOnMenuItemClickListener { item: MenuItem ->
+//            when (item.itemId) {
+//                R.id.menu_settings -> {
+//                    // Handle "Settings" option click
+//                    // Add your code here
+//                    true
+//                }
+//                R.id.menu_history -> {
+//                    // Handle "History" option click
+//                    // Add your code here
+//                    true
+//                }
+//                else -> false
+//            }
+//        }
+//
+//        // Show the PopupMenu
+//        popupMenu.show()
+//    }
 
     private fun initTheme() {
         if (sharedPreferences.getBoolean("DarkMode_key", false)) AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)

@@ -13,8 +13,12 @@
         <item name="android:statusBarColor">#242424</item>
         <!-- Customize your theme here. -->
         <item name="android:fontFamily">@font/acme</item>
+        <item name="drawerArrowStyle">@style/DrawerIcon</item>
     </style>
 
+    <style name="DrawerIcon" parent="Widget.AppCompat.DrawerArrowToggle">
+        <item name="color">@color/black</item>
+    </style>
     <!-- Base theme for ColorPickerDialog -->
     <style name="AppTheme.ColorPicker" parent="Theme.AppCompat.Light.Dialog.Alert">
         <!-- Customize positive (OK) button color -->

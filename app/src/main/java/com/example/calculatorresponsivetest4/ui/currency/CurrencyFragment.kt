@@ -11,6 +11,7 @@ import com.example.calculatorresponsivetest4.db.DBViewModel
 import com.example.calculatorresponsivetest4.db.DBViewModelFactory
 import com.example.calculatorresponsivetest4.db.Database
 import com.example.calculatorresponsivetest4.ui.converter.ConverterViewModel
+import com.example.calculatorresponsivetest4.utils.CustomVibrate
 import java.lang.StringBuilder
 
 class CurrencyFragment : Fragment() {
@@ -68,16 +69,19 @@ class CurrencyFragment : Fragment() {
                 btnNine,
                 btnDot,
                 btnReturn,
-                etCurrencyFrom
+                etCurrencyFrom,
+                requireContext()
             )
 
             btnClear.setOnClickListener {
+                CustomVibrate.vibrate(50, requireContext())
                 etCurrencyFrom.setText("")
                 tvCurrencyTo.text = "0"
                 converterViewModel.displayedText.value = StringBuilder("")
             }
 
             btnConvert.setOnClickListener {
+                CustomVibrate.vibrate(50, requireContext())
                 currencyViewModel.getConvertedCurrency(
                     spCurrencyFrom.selectedItem.toString(),
                     spCurrencyTo.selectedItem.toString(),
