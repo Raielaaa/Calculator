@@ -58,6 +58,12 @@ class SettingsFragment : Fragment() {
         }
 
         initViews()
+        initClickedFunctions()
+
+        return binding.root
+    }
+
+    private fun initClickedFunctions() {
         binding.apply {
             ivChangeColor.setOnClickListener {
                 ColorPickerDialog.newBuilder()
@@ -71,8 +77,8 @@ class SettingsFragment : Fragment() {
         }
         settingsViewModel.updateSwitchOnPref(boolFromPref = sharedPreferences.getBoolean("DarkMode_key", false),
             swDisplayTheme = binding.swDisplayTheme)
-
-        return binding.root
+        settingsViewModel.initVibrateSwitch(swVibrate = binding.swVibrate, editor = editor,
+            boolFromPref = sharedPreferences.getBoolean("Vibrate_key", false))
     }
 
     private fun initViews() = settingsViewModel.updateSwitch(binding.swDisplayTheme, requireContext())

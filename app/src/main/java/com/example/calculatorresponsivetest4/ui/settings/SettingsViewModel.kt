@@ -55,4 +55,21 @@ class SettingsViewModel() : ViewModel() {
             }
         }
     }
+
+    fun initVibrateSwitch(swVibrate: SwitchCompat, editor: Editor, boolFromPref: Boolean) {
+        swVibrate.isChecked = boolFromPref
+        swVibrate.setOnCheckedChangeListener { buttonView, isChecked ->
+            if (isChecked) {
+                editor.apply {
+                    putBoolean("Vibrate_key", true)
+                    commit()
+                }
+            } else {
+                editor.apply {
+                    putBoolean("Vibrate_key", false)
+                    commit()
+                }
+            }
+        }
+    }
 }

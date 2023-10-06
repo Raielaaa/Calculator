@@ -20,6 +20,7 @@ import com.example.calculatorresponsivetest4.db.DBViewModelFactory
 import com.example.calculatorresponsivetest4.db.Database
 import com.example.calculatorresponsivetest4.db.Entity
 import com.example.calculatorresponsivetest4.ui.history.HistoryAdapter
+import com.example.calculatorresponsivetest4.utils.CustomVibrate
 import com.google.android.material.snackbar.Snackbar
 import java.text.DecimalFormat
 import javax.script.ScriptEngineManager
@@ -189,7 +190,6 @@ class StandardFragment : Fragment() {
                     }
                 }
             }
-//            homeViewModel.recentHistory.observe(viewLifecycleOwner) { tvHistory?.text = it }
         }
     }
 
@@ -396,6 +396,7 @@ class StandardFragment : Fragment() {
 
             for ((button, stringResource) in numButtons) {
                 button.setOnClickListener {
+                    CustomVibrate.vibrate(50, requireContext())
                     if (homeViewModel.isEqualsSelected.value == true && homeViewModel.isMemoryButtonSelected.value != true) {
                         inputtedValue.setLength(0)
                         homeViewModel.initialEquation.value = inputtedValue.toString()
