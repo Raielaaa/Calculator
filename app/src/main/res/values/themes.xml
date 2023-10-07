@@ -73,4 +73,23 @@
     <style name="ProgressBarStyle">
         <item name="colorAccent">@color/operator</item>
     </style>
+
+
+
+
+    <style name="MyTheme_Acme">
+        <item name="android:fontFamily">@font/acme</item>
+    </style>
+    <style name="MyTheme_ArOneSans">
+        <item name="android:fontFamily">@font/ar_one_sans</item>
+    </style>
+    <style name="MyTheme_OpenSans">
+        <item name="android:fontFamily">@font/open_sans_regular</item>
+    </style>
+    <style name="MyTheme_Poppins">
+        <item name="android:fontFamily">@font/poppins_regular</item>
+    </style>
+    <style name="MyTheme_Roboto">
+        <item name="android:fontFamily">@font/roboto_regular</item>
+    </style>
 </resources>

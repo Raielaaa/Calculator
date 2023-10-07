@@ -9,9 +9,14 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.ViewModel
 import com.example.calculatorresponsivetest4.R
 import androidx.appcompat.widget.SwitchCompat
+import androidx.lifecycle.MutableLiveData
 
 
 class SettingsViewModel() : ViewModel() {
+    val hexColor: MutableLiveData<String> by lazy {
+        MutableLiveData<String>()
+    }
+
     fun updateFont(selectedFont: String) {
         val fontResourceID = when (selectedFont) {
             "Acme" -> R.font.acme

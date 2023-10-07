@@ -1,18 +1,9 @@
 package com.example.calculatorresponsivetest4
 
-import android.app.usage.UsageEvents.Event.NONE
 import android.content.SharedPreferences
-import android.content.res.Configuration
-import androidx.appcompat.widget.Toolbar
-import android.graphics.Typeface
 import android.os.Bundle
-import android.text.Spannable
-import android.text.SpannableString
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
-//import android.widget.Toolbar
 import com.google.android.material.navigation.NavigationView
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -22,28 +13,27 @@ import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.appcompat.widget.PopupMenu
-import androidx.core.content.res.ResourcesCompat
 import com.example.calculatorresponsivetest4.databinding.ActivityMainBinding
 import com.example.calculatorresponsivetest4.ui.history.DeleteHistoryDialogFragment
-import com.example.calculatorresponsivetest4.utils.CustomTypefaceSpan
 import com.jaredrummler.android.colorpicker.ColorPickerDialogListener
 
 class MainActivity : AppCompatActivity(), ColorPickerDialogListener {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
-    private lateinit var customTypeface: Typeface
     private lateinit var sharedPreferences: SharedPreferences
     var isInHistoryFragment: Boolean = false
+    private lateinit var editor: SharedPreferences.Editor
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         sharedPreferences = getSharedPreferences("SP_Calculator", MODE_PRIVATE)
         initTheme()
+        initFont()
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        editor = sharedPreferences.edit()
 
         val drawerLayout: DrawerLayout = binding.drawerLayout
         val navView: NavigationView = binding.navView
@@ -57,7 +47,6 @@ class MainActivity : AppCompatActivity(), ColorPickerDialogListener {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
-
 //        // Get the action_settings item from the toolbar
 //        val settingsItem = findViewById<View>(R.id.action_settings)
 //
@@ -66,6 +55,8 @@ class MainActivity : AppCompatActivity(), ColorPickerDialogListener {
 //            showPopupMenu(it)
 //        }
     }
+
+    private fun initFont() = setTheme(sharedPreferences.getInt("Font_key", R.style.MyTheme_Acme))
 
 //    private fun showPopupMenu(view: View) {
 //        val popupMenu = PopupMenu(this, view)
@@ -98,17 +89,8 @@ class MainActivity : AppCompatActivity(), ColorPickerDialogListener {
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        customTypeface = ResourcesCompat.getFont(this, R.font.acme)!!
         // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.main, menu)
-        val spannableString = SpannableString("Standard Calculator")
-        spannableString.setSpan(
-            CustomTypefaceSpan(customTypeface),
-            0,
-            spannableString.length,
-            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
-        )
-        supportActionBar?.title = spannableString
 
         return true
     }
@@ -127,13 +109,14 @@ class MainActivity : AppCompatActivity(), ColorPickerDialogListener {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
+        return when (item.itemId) {
             R.id.action_delete -> {
                 DeleteHistoryDialogFragment().show(supportFragmentManager, "Confirm delete dialog")
 
-                return true
+                true
             }
-            else -> return super.onOptionsItemSelected(item)
+
+            else -> super.onOptionsItemSelected(item)
         }
     }
 
@@ -141,8 +124,10 @@ class MainActivity : AppCompatActivity(), ColorPickerDialogListener {
     override fun onColorSelected(dialogId: Int, color: Int) {
         // Handle the selected color here
         val hexColor = String.format("#%06X", 0xFFFFFF and color)
-        Log.d("MyTag", "onColorSelected: $hexColor")
-        // Use hexColor as needed
+        editor.apply {
+            putString("Color_key", hexColor)
+            commit()
+        }
     }
 
     override fun onDialogDismissed(dialogId: Int) {
