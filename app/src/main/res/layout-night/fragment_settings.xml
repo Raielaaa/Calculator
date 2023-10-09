@@ -192,7 +192,7 @@
         app:layout_constraintTop_toTopOf="@+id/textView16" />
 
     <TextView
-        android:id="@+id/textView17"
+        android:id="@+id/txtAbout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_10sdp"

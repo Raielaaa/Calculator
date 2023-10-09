@@ -15,6 +15,7 @@
         <item name="android:windowLightStatusBar">true</item>
         <!-- Customize your theme here. -->
         <item name="android:fontFamily">@font/acme</item>
+        <item name="android:windowAnimationStyle">@style/animation</item>
     </style>
 
     <!-- Base theme for ColorPickerDialog -->
@@ -91,5 +92,13 @@
     </style>
     <style name="MyTheme_Roboto">
         <item name="android:fontFamily">@font/roboto_regular</item>
+    </style>
+    
+    
+    
+    
+    <style name="animation">
+        <item name="android:windowEnterAnimation">@android:anim/fade_in</item>
+        <item name="android:windowExitAnimation">@android:anim/fade_out</item>
     </style>
 </resources>

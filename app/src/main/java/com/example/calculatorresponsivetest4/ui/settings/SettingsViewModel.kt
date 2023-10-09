@@ -17,6 +17,12 @@ class SettingsViewModel() : ViewModel() {
         MutableLiveData<String>()
     }
 
+    val counter: MutableLiveData<Int> by lazy {
+        MutableLiveData<Int>().apply {
+            value = 1
+        }
+    }
+
     fun updateFont(selectedFont: String) {
         val fontResourceID = when (selectedFont) {
             "Acme" -> R.font.acme

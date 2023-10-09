@@ -19,6 +19,7 @@ import com.example.calculatorresponsivetest4.R
 import com.example.calculatorresponsivetest4.databinding.FragmentSettingsBinding
 import com.jaredrummler.android.colorpicker.ColorPickerDialog
 
+@Suppress("DEPRECATION")
 class SettingsFragment : Fragment(), SharedPreferences.OnSharedPreferenceChangeListener {
     private lateinit var binding: FragmentSettingsBinding
     private lateinit var helperClass: HelperClass
@@ -72,20 +73,23 @@ class SettingsFragment : Fragment(), SharedPreferences.OnSharedPreferenceChangeL
                     position: Int,
                     id: Long
                 ) {
-                    val selectedFont = when(parent!!.selectedItem.toString()) {
-                        "Acme" -> R.style.MyTheme_Acme
-                        "Open sans" -> R.style.MyTheme_OpenSans
-                        "Poppins" -> R.style.MyTheme_Poppins
-                        "Roboto" -> R.style.MyTheme_Roboto
-                        else -> R.style.MyTheme_Acme
-                    }
-                    requireActivity().setTheme(selectedFont)
-                    editor.apply {
-                        putInt("Font_key", selectedFont)
-                        putString("Font_string_key", parent.selectedItem.toString())
-                        commit()
-                    }
-                    Toast.makeText(requireContext(), "Restart the app to apply changes", Toast.LENGTH_SHORT).show()
+                    if (settingsViewModel.counter.value != 1) {
+                        val selectedFont = when(parent!!.selectedItem.toString()) {
+                            "Acme" -> R.style.MyTheme_Acme
+                            "Open sans" -> R.style.MyTheme_OpenSans
+                            "Poppins" -> R.style.MyTheme_Poppins
+                            "Roboto" -> R.style.MyTheme_Roboto
+                            else -> R.style.MyTheme_Acme
+                        }
+                        requireActivity().setTheme(selectedFont)
+                        editor.apply {
+                            putInt("Font_key", selectedFont)
+                            putString("Font_string_key", parent.selectedItem.toString())
+                            commit()
+                        }
+                        Toast.makeText(requireContext(), "Restart the app to apply changes", Toast.LENGTH_SHORT).show()
+                    } else settingsViewModel.counter.value = settingsViewModel.counter.value!! + 1
+                    Log.d("MyTag", "onItemSelected: ${settingsViewModel.counter.value}")
                 }
 
                 override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -103,7 +107,7 @@ class SettingsFragment : Fragment(), SharedPreferences.OnSharedPreferenceChangeL
                     .show(requireActivity())
             }
 
-            swDisplayTheme.setOnCheckedChangeListener { buttonView, isChecked ->
+            swDisplayTheme.setOnCheckedChangeListener { _, isChecked ->
                 settingsViewModel.sharedPrefSwitch(isChecked, editor)
             }
         }
@@ -137,5 +141,6 @@ class SettingsFragment : Fragment(), SharedPreferences.OnSharedPreferenceChangeL
     override fun onDestroy() {
         super.onDestroy()
         sharedPreferences.unregisterOnSharedPreferenceChangeListener(this)
+        settingsViewModel.counter.value = 1
     }
 }
