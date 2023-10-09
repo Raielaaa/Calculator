@@ -15,6 +15,7 @@ import android.widget.AdapterView.OnItemSelectedListener
 import android.widget.Toast
 import androidx.cardview.widget.CardView
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.example.calculatorresponsivetest4.R
 import com.example.calculatorresponsivetest4.databinding.FragmentSettingsBinding
 import com.jaredrummler.android.colorpicker.ColorPickerDialog
@@ -109,6 +110,10 @@ class SettingsFragment : Fragment(), SharedPreferences.OnSharedPreferenceChangeL
 
             swDisplayTheme.setOnCheckedChangeListener { _, isChecked ->
                 settingsViewModel.sharedPrefSwitch(isChecked, editor)
+            }
+
+            txtAbout.setOnClickListener {
+                findNavController().navigate(R.id.nav_about)
             }
         }
         settingsViewModel.updateSwitchOnPref(boolFromPref = sharedPreferences.getBoolean("DarkMode_key", false),
