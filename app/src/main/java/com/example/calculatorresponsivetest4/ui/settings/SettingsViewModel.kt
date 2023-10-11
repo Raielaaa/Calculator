@@ -13,27 +13,10 @@ import androidx.lifecycle.MutableLiveData
 
 
 class SettingsViewModel() : ViewModel() {
-    val hexColor: MutableLiveData<String> by lazy {
-        MutableLiveData<String>()
-    }
-
     val counter: MutableLiveData<Int> by lazy {
         MutableLiveData<Int>().apply {
             value = 1
         }
-    }
-
-    fun updateFont(selectedFont: String) {
-        val fontResourceID = when (selectedFont) {
-            "Acme" -> R.font.acme
-            "Open sans" -> R.font.open_sans_regular
-            "Poppins" -> R.font.poppins_regular
-            "Roboto" -> R.font.roboto_regular
-            else -> R.font.acme // Default font
-        }
-
-//        val newFont = ResourcesCompat.getFont(context, fontResourceID)
-//        activity.theme.applyStyle(R.font.poppins_regular, true)
     }
 
     fun updateSwitch(swDisplayTheme: SwitchCompat, context: Context) {

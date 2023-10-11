@@ -1,9 +1,12 @@
 package com.example.calculatorresponsivetest4
 
 import android.content.SharedPreferences
+import android.content.res.Configuration
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
+import android.widget.Toast
 import com.google.android.material.navigation.NavigationView
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -13,17 +16,20 @@ import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.appcompat.widget.PopupMenu
+import androidx.navigation.NavController
 import com.example.calculatorresponsivetest4.databinding.ActivityMainBinding
 import com.example.calculatorresponsivetest4.ui.history.DeleteHistoryDialogFragment
 import com.jaredrummler.android.colorpicker.ColorPickerDialogListener
 
-class MainActivity : AppCompatActivity(), ColorPickerDialogListener {
+class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
     private lateinit var sharedPreferences: SharedPreferences
     var isInHistoryFragment: Boolean = false
     private lateinit var editor: SharedPreferences.Editor
+    private lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,7 +43,7 @@ class MainActivity : AppCompatActivity(), ColorPickerDialogListener {
 
         val drawerLayout: DrawerLayout = binding.drawerLayout
         val navView: NavigationView = binding.navView
-        val navController = findNavController(R.id.nav_host_fragment_content_main)
+        navController = findNavController(R.id.nav_host_fragment_content_main)
         setSupportActionBar(binding.appBarMain.toolbar)
 
         appBarConfiguration = AppBarConfiguration(
@@ -47,41 +53,13 @@ class MainActivity : AppCompatActivity(), ColorPickerDialogListener {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
-//        // Get the action_settings item from the toolbar
-//        val settingsItem = findViewById<View>(R.id.action_settings)
-//
-//        // Set a click listener for the action_settings item
-//        settingsItem.setOnClickListener {
-//            showPopupMenu(it)
-//        }
+
+        if (resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            supportActionBar!!.hide();
+        }
     }
 
     private fun initFont() = setTheme(sharedPreferences.getInt("Font_key", R.style.MyTheme_Acme))
-
-//    private fun showPopupMenu(view: View) {
-//        val popupMenu = PopupMenu(this, view)
-//        popupMenu.inflate(R.menu.popup_menu)
-//
-//        // Set a listener for menu item clicks
-//        popupMenu.setOnMenuItemClickListener { item: MenuItem ->
-//            when (item.itemId) {
-//                R.id.menu_settings -> {
-//                    // Handle "Settings" option click
-//                    // Add your code here
-//                    true
-//                }
-//                R.id.menu_history -> {
-//                    // Handle "History" option click
-//                    // Add your code here
-//                    true
-//                }
-//                else -> false
-//            }
-//        }
-//
-//        // Show the PopupMenu
-//        popupMenu.show()
-//    }
 
     private fun initTheme() {
         if (sharedPreferences.getBoolean("DarkMode_key", false)) AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
@@ -112,7 +90,11 @@ class MainActivity : AppCompatActivity(), ColorPickerDialogListener {
         return when (item.itemId) {
             R.id.action_delete -> {
                 DeleteHistoryDialogFragment().show(supportFragmentManager, "Confirm delete dialog")
-
+                true
+            }
+            R.id.action_settings -> {
+                val anchorView = findViewById<View>(R.id.action_settings) // You can replace this with any suitable anchor view
+                showSettingsPopupMenu(anchorView)
                 true
             }
 
@@ -120,17 +102,27 @@ class MainActivity : AppCompatActivity(), ColorPickerDialogListener {
         }
     }
 
-    // Implement the ColorPickerDialogListener interface
-    override fun onColorSelected(dialogId: Int, color: Int) {
-        // Handle the selected color here
-        val hexColor = String.format("#%06X", 0xFFFFFF and color)
-        editor.apply {
-            putString("Color_key", hexColor)
-            commit()
-        }
-    }
+    private fun showSettingsPopupMenu(view: View) {
+        val popupMenu = PopupMenu(this, view)
+        popupMenu.menuInflater.inflate(R.menu.popup_menu, popupMenu.menu)
 
-    override fun onDialogDismissed(dialogId: Int) {
-        // Handle dialog dismissal if needed
+        // Set item click listener for the popup menu
+        popupMenu.setOnMenuItemClickListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.menu_settings -> {
+                    navController.navigate(R.id.nav_settings)
+                    true
+                }
+                R.id.menu_history -> {
+                    navController.navigate(R.id.nav_history)
+                    true
+                }
+                else -> false
+            }
+        }
+
+        // Show the popup menu
+        popupMenu.show()
+        navController.popBackStack()
     }
 }

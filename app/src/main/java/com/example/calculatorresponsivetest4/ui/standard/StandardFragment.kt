@@ -3,6 +3,7 @@ package com.example.calculatorresponsivetest4.ui.standard
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.SharedPreferences
+import android.content.res.Configuration
 import android.os.Bundle
 import android.text.method.ScrollingMovementMethod
 import android.util.Log
@@ -10,6 +11,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -46,6 +48,7 @@ class StandardFragment : Fragment() {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
+        initViewOrientation()
         initializeViewModels()
         initializeDecimalFormat()
         initializeSharedPreferences()
@@ -57,6 +60,10 @@ class StandardFragment : Fragment() {
         initializeTvAnswer()
 
         return root
+    }
+
+    private fun initViewOrientation() {
+
     }
 
     private fun configureMemoryTextView(isAnswerPresent: Boolean, memoryTextView: TextView) {

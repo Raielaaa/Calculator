@@ -1,5 +1,7 @@
 package com.example.calculatorresponsivetest4.ui.standard
 
+import android.app.Activity
+import android.content.res.Configuration
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
@@ -49,5 +51,13 @@ class StandardViewModel : ViewModel() {
     override fun onCleared() {
         super.onCleared()
         initialEquation.value = ""
+    }
+
+    fun initLayoutOrientation(activity: Activity) {
+        val orientation = activity.resources.configuration.orientation
+
+        if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            activity.actionBar!!.hide()
+        }
     }
 }

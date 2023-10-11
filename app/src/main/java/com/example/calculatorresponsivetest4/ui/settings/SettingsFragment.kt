@@ -20,8 +20,7 @@ import com.example.calculatorresponsivetest4.R
 import com.example.calculatorresponsivetest4.databinding.FragmentSettingsBinding
 import com.jaredrummler.android.colorpicker.ColorPickerDialog
 
-@Suppress("DEPRECATION")
-class SettingsFragment : Fragment(), SharedPreferences.OnSharedPreferenceChangeListener {
+class SettingsFragment : Fragment() {
     private lateinit var binding: FragmentSettingsBinding
     private lateinit var helperClass: HelperClass
     private lateinit var sharedPreferences: SharedPreferences
@@ -41,18 +40,7 @@ class SettingsFragment : Fragment(), SharedPreferences.OnSharedPreferenceChangeL
         binding = FragmentSettingsBinding.inflate(inflater, container, false)
         helperClass = HelperClass()
         sharedPreferences = requireContext().getSharedPreferences("SP_Calculator", MODE_PRIVATE)
-        sharedPreferences.registerOnSharedPreferenceChangeListener(this)
         editor = sharedPreferences.edit()
-
-        val colorPreference = helperClass.findPreference("default_color")
-
-        colorPreference?.setOnPreferenceChangeListener { _, newValue ->
-            val selectedColor = newValue as Int
-            val hexColor = String.format("#%06X", 0xFFFFFF and selectedColor)
-            // Use hexColor as needed
-
-            true
-        }
 
         initViews()
         initClickedFunctions()
@@ -102,12 +90,6 @@ class SettingsFragment : Fragment(), SharedPreferences.OnSharedPreferenceChangeL
 
     private fun initClickedFunctions() {
         binding.apply {
-            ivChangeColor.setOnClickListener {
-                ColorPickerDialog.newBuilder()
-                    .setColor(requireContext().resources.getColor(R.color.operator))
-                    .show(requireActivity())
-            }
-
             swDisplayTheme.setOnCheckedChangeListener { _, isChecked ->
                 settingsViewModel.sharedPrefSwitch(isChecked, editor)
             }
@@ -125,27 +107,12 @@ class SettingsFragment : Fragment(), SharedPreferences.OnSharedPreferenceChangeL
     private fun initViews() {
         binding.apply {
             settingsViewModel.updateSwitch(swDisplayTheme, requireContext())
-
-            val hexColor = sharedPreferences.getString("Color_key", "#eb6767") // Provide a default color if needed
-            ivChangeColor.setCardBackgroundColor(Color.parseColor(hexColor))
         }
 
-    }
-
-    override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences?, key: String?) {
-        // This method will be called whenever a preference value changes
-        if (key == "Color_key") {
-            // Handle the change of "Color_key" preference
-            val newColor = sharedPreferences!!.getString(key, "#000000")
-            binding.ivChangeColor.setCardBackgroundColor(Color.parseColor(newColor))
-        } else {
-            Log.d("MyTag", "onSharedPreferenceChanged: not found")
-        }
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        sharedPreferences.unregisterOnSharedPreferenceChangeListener(this)
         settingsViewModel.counter.value = 1
     }
 }
