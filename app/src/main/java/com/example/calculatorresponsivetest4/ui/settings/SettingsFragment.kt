@@ -3,6 +3,7 @@ package com.example.calculatorresponsivetest4.ui.settings
 import android.content.Context.MODE_PRIVATE
 import android.content.SharedPreferences
 import android.content.SharedPreferences.Editor
+import android.content.pm.ActivityInfo
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
@@ -42,6 +43,7 @@ class SettingsFragment : Fragment() {
         sharedPreferences = requireContext().getSharedPreferences("SP_Calculator", MODE_PRIVATE)
         editor = sharedPreferences.edit()
 
+        requireActivity().requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         initViews()
         initClickedFunctions()
         initSpinner()
@@ -114,5 +116,6 @@ class SettingsFragment : Fragment() {
     override fun onDestroy() {
         super.onDestroy()
         settingsViewModel.counter.value = 1
+        requireActivity().requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED
     }
 }

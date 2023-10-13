@@ -141,6 +141,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="10dp"
+        app:cardCornerRadius="10dp"
         app:cardElevation="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guidelineEnd"
@@ -161,7 +162,7 @@
                 android:layout_weight="1"
                 android:backgroundTint="@color/operator"
                 android:text="CLEAR"
-                android:textSize="@dimen/_16ssp"
+                android:textSize="@dimen/_12ssp"
                 app:cornerRadius="30dp" />
 
             <LinearLayout
@@ -179,7 +180,7 @@
                     android:backgroundTint="#F7F7F7"
                     android:text="@string/seven"
                     android:textColor="#000000"
-                    android:textSize="@dimen/_16ssp"
+                    android:textSize="@dimen/_12ssp"
                     app:cornerRadius="10dp" />
 
                 <Button
@@ -191,7 +192,7 @@
                     android:backgroundTint="#F7F7F7"
                     android:text="@string/eight"
                     android:textColor="#000000"
-                    android:textSize="@dimen/_16ssp"
+                    android:textSize="@dimen/_12ssp"
                     app:cornerRadius="10dp" />
 
                 <Button
@@ -202,7 +203,7 @@
                     android:backgroundTint="#F7F7F7"
                     android:text="@string/nine"
                     android:textColor="#000000"
-                    android:textSize="@dimen/_16ssp"
+                    android:textSize="@dimen/_12ssp"
                     app:cornerRadius="10dp" />
             </LinearLayout>
 
@@ -221,7 +222,7 @@
                     android:backgroundTint="#F7F7F7"
                     android:text="@string/four"
                     android:textColor="#000000"
-                    android:textSize="@dimen/_16ssp"
+                    android:textSize="@dimen/_12ssp"
                     app:cornerRadius="10dp" />
 
                 <Button
@@ -233,7 +234,7 @@
                     android:backgroundTint="#F7F7F7"
                     android:text="@string/five"
                     android:textColor="#000000"
-                    android:textSize="@dimen/_16ssp"
+                    android:textSize="@dimen/_12ssp"
                     app:cornerRadius="10dp" />
 
                 <Button
@@ -244,7 +245,7 @@
                     android:backgroundTint="#F7F7F7"
                     android:text="@string/six"
                     android:textColor="#000000"
-                    android:textSize="@dimen/_16ssp"
+                    android:textSize="@dimen/_12ssp"
                     app:cornerRadius="10dp" />
             </LinearLayout>
 
@@ -263,7 +264,7 @@
                     android:backgroundTint="#F7F7F7"
                     android:text="@string/one"
                     android:textColor="#000000"
-                    android:textSize="@dimen/_16ssp"
+                    android:textSize="@dimen/_12ssp"
                     app:cornerRadius="10dp" />
 
                 <Button
@@ -275,7 +276,7 @@
                     android:backgroundTint="#F7F7F7"
                     android:text="@string/two"
                     android:textColor="#000000"
-                    android:textSize="@dimen/_16ssp"
+                    android:textSize="@dimen/_12ssp"
                     app:cornerRadius="10dp" />
 
                 <Button
@@ -286,7 +287,7 @@
                     android:backgroundTint="#F7F7F7"
                     android:text="@string/three"
                     android:textColor="#000000"
-                    android:textSize="@dimen/_16ssp"
+                    android:textSize="@dimen/_12ssp"
                     app:cornerRadius="10dp" />
             </LinearLayout>
 
@@ -305,7 +306,7 @@
                     android:backgroundTint="#F7F7F7"
                     android:text="@string/returns"
                     android:textColor="#000000"
-                    android:textSize="@dimen/_16ssp"
+                    android:textSize="@dimen/_12ssp"
                     android:textStyle="bold"
                     app:cornerRadius="10dp" />
 
@@ -318,7 +319,7 @@
                     android:backgroundTint="#F7F7F7"
                     android:text="@string/zero"
                     android:textColor="#000000"
-                    android:textSize="@dimen/_16ssp"
+                    android:textSize="@dimen/_12ssp"
                     app:cornerRadius="10dp" />
 
                 <Button
@@ -329,7 +330,7 @@
                     android:backgroundTint="#F7F7F7"
                     android:text="@string/point"
                     android:textColor="#000000"
-                    android:textSize="@dimen/_16ssp"
+                    android:textSize="@dimen/_12ssp"
                     app:cornerRadius="10dp" />
             </LinearLayout>
         </LinearLayout>
