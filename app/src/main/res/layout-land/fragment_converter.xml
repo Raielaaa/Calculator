@@ -64,7 +64,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="@dimen/_40sdp"
                 android:orientation="horizontal"
                 android:paddingStart="20dp"
                 android:paddingEnd="20dp"
@@ -96,7 +96,7 @@
                     <EditText
                         android:id="@+id/etNumInputTo"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:backgroundTint="@color/operator"
                         android:ellipsize="end"
                         android:focusable="false"

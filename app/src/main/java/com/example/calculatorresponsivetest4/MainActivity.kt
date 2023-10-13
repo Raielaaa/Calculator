@@ -3,6 +3,7 @@ package com.example.calculatorresponsivetest4
 import android.content.SharedPreferences
 import android.content.res.Configuration
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -55,15 +56,22 @@ class MainActivity : AppCompatActivity() {
         navView.setupWithNavController(navController)
 
         if (resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            supportActionBar!!.hide();
-        }
+            supportActionBar!!.hide()
+        } else supportActionBar!!.show()
+
     }
 
     private fun initFont() = setTheme(sharedPreferences.getInt("Font_key", R.style.MyTheme_Acme))
 
     private fun initTheme() {
-        if (sharedPreferences.getBoolean("DarkMode_key", false)) AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-        else AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        val deviceOrientation = resources.configuration.orientation
+
+        if (deviceOrientation == Configuration.ORIENTATION_LANDSCAPE) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        } else if (deviceOrientation == Configuration.ORIENTATION_PORTRAIT) {
+            if (sharedPreferences.getBoolean("DarkMode_key", false)) AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            else AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
