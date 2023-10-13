@@ -55,7 +55,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_5sdp"
-        android:text="v3.2.0"
+        android:text="v3.6.0"
         android:textColor="#D0F7F7F7"
         android:textSize="@dimen/_12ssp"
         app:layout_constraintStart_toStartOf="parent"

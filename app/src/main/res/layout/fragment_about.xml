@@ -57,7 +57,7 @@
         android:textSize="@dimen/_12ssp"
         android:layout_marginTop="@dimen/_5sdp"
         android:textColor="#52000000"
-        android:text="v3.2.0"
+        android:text="v3.6.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView20" />
 
